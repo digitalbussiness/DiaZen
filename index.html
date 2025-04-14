@@ -1,88 +1,159 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DiaZen - Ferramentas de Produtividade</title>
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.34/moment-timezone-with-data.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>DiaZen - Ferramentas de Produtividade</h1>
-    </header>
 
-    <main>
-        <section id="tools">
-            <!-- Relógio Mundial -->
-            <div id="world-clock">
-                <h2>Relógio Mundial</h2>
-                <div id="world-clock-display">
-                    <label for="timezone">Escolha a cidade:</label>
-                    <select id="timezone" onchange="updateWorldClock()">
-                        <option value="America/New_York">Nova Iorque</option>
-                        <option value="Europe/London">Londres</option>
-                        <option value="Asia/Tokyo">Tóquio</option>
-                        <option value="Australia/Sydney">Sidney</option>
-                        <option value="Europe/Paris">Paris</option>
-                    </select>
-                    <div id="time"></div>
-                </div>
-            </div>
+    <!-- Barra de navegação -->
+    <nav>
+        <ul>
+            <li><a href="#cronometro">Cronômetro</a></li>
+            <li><a href="#timer">Timer</a></li>
+            <li><a href="#relogio">Relógio</a></li>
+            <li><a href="#relgocio-mundial">Relógio Mundial</a></li>
+            <li><a href="#conversor-fuso-horario">Conversor de Fuso Horário</a></li>
+            <li><a href="#calendario">Calendário</a></li>
+            <li><a href="#dicas">Dicas de Produtividade</a></li>
+        </ul>
+    </nav>
 
-            <!-- Conversor de Fuso Horário -->
-            <div id="timezone-converter">
-                <h2>Conversor de Fuso Horário</h2>
-                <label for="from-timezone">De:</label>
-                <select id="from-timezone">
-                    <option value="America/New_York">Nova Iorque</option>
-                    <option value="Europe/London">Londres</option>
-                    <option value="Asia/Tokyo">Tóquio</option>
-                    <option value="Australia/Sydney">Sidney</option>
-                    <option value="Europe/Paris">Paris</option>
-                </select>
-                <label for="to-timezone">Para:</label>
-                <select id="to-timezone">
-                    <option value="America/New_York">Nova Iorque</option>
-                    <option value="Europe/London">Londres</option>
-                    <option value="Asia/Tokyo">Tóquio</option>
-                    <option value="Australia/Sydney">Sidney</option>
-                    <option value="Europe/Paris">Paris</option>
-                </select>
-                <button onclick="convertTime()">Converter</button>
-                <div id="converted-time"></div>
-            </div>
-        </section>
-    </main>
+    <!-- Cronômetro -->
+    <section id="cronometro">
+        <h2>Cronômetro</h2>
+        <button id="startStop">Iniciar</button>
+        <button id="reset">Resetar</button>
+        <div id="timeDisplay">00:00</div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 DiaZen - Todos os direitos reservados.</p>
-    </footer>
+    <!-- Timer -->
+    <section id="timer">
+        <h2>Timer Regresivo</h2>
+        <input type="number" id="timerInput" placeholder="Minutos" />
+        <button id="startTimer">Iniciar Timer</button>
+        <div id="timerDisplay">00:00</div>
+    </section>
+
+    <!-- Relógio Local -->
+    <section id="relogio">
+        <h2>Relógio Local</h2>
+        <div id="relogioDisplay">00:00:00</div>
+    </section>
+
+    <!-- Relógio Mundial -->
+    <section id="relgocio-mundial">
+        <h2>Relógio Mundial</h2>
+        <div id="worldClock"></div>
+    </section>
+
+    <!-- Conversor de Fuso Horário -->
+    <section id="conversor-fuso-horario">
+        <h2>Conversor de Fuso Horário</h2>
+        <label for="timezone">Escolha o fuso horário:</label>
+        <select id="timezone">
+            <option value="America/New_York">New York</option>
+            <option value="Europe/London">London</option>
+            <option value="Asia/Tokyo">Tokyo</option>
+        </select>
+        <button id="convertTimezone">Converter</button>
+        <div id="convertedTime"></div>
+    </section>
+
+    <!-- Calendário -->
+    <section id="calendario">
+        <h2>Calendário Interativo</h2>
+        <div id="calendar"></div>
+    </section>
+
+    <!-- Dicas de Produtividade -->
+    <section id="dicas">
+        <h2>Dicas de Produtividade</h2>
+        <ul>
+            <li>Estabeleça metas diárias para melhorar sua produtividade.</li>
+            <li>Use o método Pomodoro para gerenciar seu tempo de forma eficaz.</li>
+            <li>Priorize suas tarefas mais importantes.</li>
+        </ul>
+    </section>
 
     <script>
-        // Função para atualizar o relógio mundial com base na cidade escolhida
+        // Função do Cronômetro
+        let running = false;
+        let time = 0;
+        let interval;
+
+        document.getElementById('startStop').addEventListener('click', function() {
+            if (running) {
+                clearInterval(interval);
+                this.innerText = "Iniciar";
+            } else {
+                interval = setInterval(function() {
+                    time++;
+                    let minutes = Math.floor(time / 60);
+                    let seconds = time % 60;
+                    document.getElementById('timeDisplay').innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                }, 1000);
+                this.innerText = "Parar";
+            }
+            running = !running;
+        });
+
+        document.getElementById('reset').addEventListener('click', function() {
+            clearInterval(interval);
+            time = 0;
+            document.getElementById('timeDisplay').innerText = "00:00";
+            document.getElementById('startStop').innerText = "Iniciar";
+            running = false;
+        });
+
+        // Função do Timer
+        let timerInterval;
+        document.getElementById('startTimer').addEventListener('click', function() {
+            let timeLeft = parseInt(document.getElementById('timerInput').value) * 60;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert("O tempo acabou!");
+                } else {
+                    timeLeft--;
+                    let minutes = Math.floor(timeLeft / 60);
+                    let seconds = timeLeft % 60;
+                    document.getElementById('timerDisplay').innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                }
+            }, 1000);
+        });
+
+        // Função do Relógio Local
+        function updateClock() {
+            let currentTime = moment().format('HH:mm:ss');
+            document.getElementById('relogioDisplay').innerText = currentTime;
+        }
+        setInterval(updateClock, 1000);
+
+        // Função do Relógio Mundial
+        const cities = ['America/New_York', 'Europe/London', 'Asia/Tokyo'];
         function updateWorldClock() {
-            const timezone = document.getElementById("timezone").value;
-            const options = { timeZone: timezone, hour: "2-digit", minute: "2-digit", second: "2-digit" };
-            const date = new Date().toLocaleString('pt-BR', options);
-            document.getElementById("time").innerText = `Horário atual em ${timezone}: ${date}`;
+            let html = '';
+            cities.forEach(city => {
+                let time = moment.tz(city).format('HH:mm:ss');
+                html += `<p>${city.replace('/', ' ')}: ${time}</p>`;
+            });
+            document.getElementById('worldClock').innerHTML = html;
         }
+        setInterval(updateWorldClock, 1000);
 
-        // Função para converter o horário de uma zona para outra
-        async function convertTime() {
-            const fromTimezone = document.getElementById("from-timezone").value;
-            const toTimezone = document.getElementById("to-timezone").value;
-            const date = new Date().toISOString();
-            
-            const response = await fetch(`https://timezoneapi.io/api/convert/?from=${fromTimezone}&to=${toTimezone}&time=${date}`);
-            const data = await response.json();
-            
-            const convertedTime = data.data.time;
-            document.getElementById("converted-time").innerText = `Horário convertido de ${fromTimezone} para ${toTimezone}: ${convertedTime}`;
-        }
-
-        // Iniciar o relógio mundial ao carregar a página
-        window.onload = updateWorldClock;
+        // Função de Conversor de Fuso Horário
+        document.getElementById('convertTimezone').addEventListener('click', function() {
+            let timezone = document.getElementById('timezone').value;
+            let time = moment.tz(timezone).format('HH:mm:ss');
+            document.getElementById('convertedTime').innerText = `Hora em ${timezone}: ${time}`;
+        });
     </script>
 </body>
 </html>
