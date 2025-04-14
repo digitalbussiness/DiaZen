@@ -1,106 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DiaZen - Ferramentas do Dia a Dia</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiaZen - Ferramentas de Produtividade</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+    <header>
+        <h1>DiaZen - Ferramentas de Produtividade</h1>
+    </header>
 
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-white">
-  <div class="container mx-auto px-4 py-6">
-    <h1 class="text-4xl font-bold text-center mb-8">DiaZen</h1>
+    <main>
+        <section id="tools">
+            <!-- Relógio Mundial -->
+            <div id="world-clock">
+                <h2>Relógio Mundial</h2>
+                <div id="world-clock-display">
+                    <label for="timezone">Escolha a cidade:</label>
+                    <select id="timezone" onchange="updateWorldClock()">
+                        <option value="America/New_York">Nova Iorque</option>
+                        <option value="Europe/London">Londres</option>
+                        <option value="Asia/Tokyo">Tóquio</option>
+                        <option value="Australia/Sydney">Sidney</option>
+                        <option value="Europe/Paris">Paris</option>
+                    </select>
+                    <div id="time"></div>
+                </div>
+            </div>
 
-    <!-- Relógio Mundial -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">Relógio Mundial</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="world-clock"></div>
-    </section>
+            <!-- Conversor de Fuso Horário -->
+            <div id="timezone-converter">
+                <h2>Conversor de Fuso Horário</h2>
+                <label for="from-timezone">De:</label>
+                <select id="from-timezone">
+                    <option value="America/New_York">Nova Iorque</option>
+                    <option value="Europe/London">Londres</option>
+                    <option value="Asia/Tokyo">Tóquio</option>
+                    <option value="Australia/Sydney">Sidney</option>
+                    <option value="Europe/Paris">Paris</option>
+                </select>
+                <label for="to-timezone">Para:</label>
+                <select id="to-timezone">
+                    <option value="America/New_York">Nova Iorque</option>
+                    <option value="Europe/London">Londres</option>
+                    <option value="Asia/Tokyo">Tóquio</option>
+                    <option value="Australia/Sydney">Sidney</option>
+                    <option value="Europe/Paris">Paris</option>
+                </select>
+                <button onclick="convertTime()">Converter</button>
+                <div id="converted-time"></div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Conversor de Fuso Horário -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">Conversor de Fuso Horário</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label class="block mb-2">De:</label>
-          <select id="fromZone" class="w-full p-2 border rounded">
-            <option value="America/Sao_Paulo">São Paulo</option>
-            <option value="UTC">UTC</option>
-            <option value="Europe/London">Londres</option>
-            <option value="Asia/Tokyo">Tóquio</option>
-            <option value="America/New_York">Nova York</option>
-          </select>
-        </div>
-        <div>
-          <label class="block mb-2">Para:</label>
-          <select id="toZone" class="w-full p-2 border rounded">
-            <option value="America/Sao_Paulo">São Paulo</option>
-            <option value="UTC">UTC</option>
-            <option value="Europe/London">Londres</option>
-            <option value="Asia/Tokyo">Tóquio</option>
-            <option value="America/New_York">Nova York</option>
-          </select>
-        </div>
-        <div>
-          <label class="block mb-2">Horário:</label>
-          <input id="inputTime" type="time" class="w-full p-2 border rounded" value="12:00">
-        </div>
-        <div class="flex items-end">
-          <button onclick="convertTime()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Converter</button>
-        </div>
-        <div class="col-span-2 mt-4">
-          <p class="font-medium">Resultado: <span id="convertedTime">--:--</span></p>
-        </div>
-      </div>
-    </section>
-  </div>
+    <footer>
+        <p>&copy; 2025 DiaZen - Todos os direitos reservados.</p>
+    </footer>
 
-  <script>
-    const { DateTime } = luxon;
+    <script>
+        // Função para atualizar o relógio mundial com base na cidade escolhida
+        function updateWorldClock() {
+            const timezone = document.getElementById("timezone").value;
+            const options = { timeZone: timezone, hour: "2-digit", minute: "2-digit", second: "2-digit" };
+            const date = new Date().toLocaleString('pt-BR', options);
+            document.getElementById("time").innerText = `Horário atual em ${timezone}: ${date}`;
+        }
 
-    // Relógio Mundial
-    const cities = [
-      { name: 'São Paulo', zone: 'America/Sao_Paulo' },
-      { name: 'Londres', zone: 'Europe/London' },
-      { name: 'Tóquio', zone: 'Asia/Tokyo' },
-      { name: 'Nova York', zone: 'America/New_York' }
-    ];
+        // Função para converter o horário de uma zona para outra
+        async function convertTime() {
+            const fromTimezone = document.getElementById("from-timezone").value;
+            const toTimezone = document.getElementById("to-timezone").value;
+            const date = new Date().toISOString();
+            
+            const response = await fetch(`https://timezoneapi.io/api/convert/?from=${fromTimezone}&to=${toTimezone}&time=${date}`);
+            const data = await response.json();
+            
+            const convertedTime = data.data.time;
+            document.getElementById("converted-time").innerText = `Horário convertido de ${fromTimezone} para ${toTimezone}: ${convertedTime}`;
+        }
 
-    function updateWorldClock() {
-      const container = document.getElementById("world-clock");
-      container.innerHTML = cities.map(city => {
-        const time = DateTime.now().setZone(city.zone).toFormat("HH:mm:ss");
-        return `<div class="bg-white dark:bg-gray-800 p-4 rounded shadow text-center">
-                  <h3 class="text-lg font-semibold">${city.name}</h3>
-                  <p class="text-xl">${time}</p>
-                </div>`;
-      }).join("");
-    }
-
-    setInterval(updateWorldClock, 1000);
-    updateWorldClock();
-
-    // Conversor de Fuso Horário
-    function convertTime() {
-      const from = document.getElementById("fromZone").value;
-      const to = document.getElementById("toZone").value;
-      const timeStr = document.getElementById("inputTime").value;
-      const [hour, minute] = timeStr.split(":");
-
-      const dt = DateTime.now().setZone(from).set({ hour: parseInt(hour), minute: parseInt(minute) });
-      const converted = dt.setZone(to);
-
-      document.getElementById("convertedTime").textContent = converted.toFormat("HH:mm");
-    }
-  </script>
+        // Iniciar o relógio mundial ao carregar a página
+        window.onload = updateWorldClock;
+    </script>
 </body>
-
 </html>
