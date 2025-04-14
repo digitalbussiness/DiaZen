@@ -1,101 +1,272 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DiaZen - Ferramentas úteis para o dia a dia, como cronômetro, timer, relógio mundial e mais.">
-    <title>DiaZen - Ferramentas do Dia a Dia</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.png" type="image/png">
-    
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Script para o funcionamento das funcionalidades -->
-    <script src="scripts.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiaZen - Ferramentas do Dia a Dia</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f7f7f7;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #444;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      color: #777;
+    }
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .tool {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    .tool h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    .output {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    button {
+      padding: 8px 14px;
+      font-size: 1rem;
+      background-color: #6c63ff;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    button:hover {
+      background-color: #574fe0;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>DiaZen</h1>
+    <p>Ferramentas úteis e simples para o seu dia a dia</p>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <h1>DiaZen</h1>
-        <p>Ferramentas úteis para o seu dia a dia!</p>
-    </header>
+  <main class="tools">
 
-    <!-- Menu de navegação -->
-    <nav>
-        <ul>
-            <li><a href="#cronometro">Cronômetro</a></li>
-            <li><a href="#timer">Timer</a></li>
-            <li><a href="#relogio-local">Relógio Local</a></li>
-            <li><a href="#relogio-mundial">Relógio Mundial</a></li>
-            <li><a href="#conversor-fuso">Conversor de Fuso Horário</a></li>
-        </ul>
-    </nav>
+    <!-- Relógio Local -->
+    <section class="tool">
+      <h2>Relógio Local</h2>
+      <div id="localClock" class="output">--:--:--</div>
+    </section>
 
-    <!-- Conteúdo principal -->
-    <main>
-        <!-- Cronômetro -->
-        <section id="cronometro">
-            <h2>Cronômetro</h2>
-            <div id="cronometro-display">00:00:00</div>
-            <button id="start-stop">Iniciar</button>
-        </section>
+    <!-- Cronômetro -->
+    <section class="tool">
+      <h2>Cronômetro</h2>
+      <div id="stopwatch" class="output">00:00:00</div>
+      <button onclick="startStopwatch()">Iniciar</button>
+      <button onclick="stopStopwatch()">Parar</button>
+      <button onclick="resetStopwatch()">Resetar</button>
+    </section>
 
-        <!-- Timer -->
-        <section id="timer">
-            <h2>Timer Regressivo</h2>
-            <div id="timer-display">00:00:00</div>
-            <input type="number" id="timer-input" placeholder="Segundos">
-            <button id="timer-start">Iniciar Timer</button>
-        </section>
+    <!-- Timer -->
+    <section class="tool">
+      <h2>Timer Regressivo</h2>
+      <input type="number" id="timerInput" placeholder="Segundos" />
+      <div id="timerOutput" class="output">00:00</div>
+      <button onclick="startTimer()">Iniciar Timer</button>
+    </section>
 
-        <!-- Relógio Local -->
-        <section id="relogio-local">
-            <h2>Relógio Local</h2>
-            <div id="relogio-local-display">00:00:00</div>
-        </section>
+    <!-- Relógio Mundial -->
+    <section class="tool">
+      <h2>Relógio Mundial</h2>
+      <select id="timezoneSelect" onchange="updateWorldClock()">
+        <option value="America/Sao_Paulo">São Paulo</option>
+        <option value="America/New_York">Nova York</option>
+        <option value="Europe/London">Londres</option>
+        <option value="Asia/Tokyo">Tóquio</option>
+      </select>
+      <div id="worldClock" class="output">--:--:--</div>
+    </section>
 
-        <!-- Relógio Mundial -->
-        <section id="relogio-mundial">
-            <h2>Relógio Mundial</h2>
-            <div id="relogio-mundial-display">
-                <label for="city">Escolha uma cidade:</label>
-                <select id="city">
-                    <option value="America/New_York">Nova Iorque</option>
-                    <option value="Europe/London">Londres</option>
-                    <option value="Asia/Tokyo">Tóquio</option>
-                    <option value="Europe/Paris">Paris</option>
-                </select>
-                <div id="selected-time">00:00:00</div>
-            </div>
-        </section>
+    <!-- Conversor de Fuso Horário -->
+    <section class="tool">
+      <h2>Conversor de Fuso</h2>
+      <input type="datetime-local" id="convertTime" />
+      <select id="fromTZ">
+        <option value="America/Sao_Paulo">São Paulo</option>
+        <option value="America/New_York">Nova York</option>
+        <option value="Europe/London">Londres</option>
+      </select>
+      <select id="toTZ">
+        <option value="Europe/London">Londres</option>
+        <option value="Asia/Tokyo">Tóquio</option>
+        <option value="America/Los_Angeles">Los Angeles</option>
+      </select>
+      <button onclick="convertTimeZone()">Converter</button>
+      <div id="convertedTime" class="output">--:--</div>
+    </section>
 
-        <!-- Conversor de Fuso Horário -->
-        <section id="conversor-fuso">
-            <h2>Conversor de Fuso Horário</h2>
-            <div>
-                <label for="time">Hora (HH:MM):</label>
-                <input type="time" id="time" value="12:00">
-            </div>
-            <div>
-                <label for="timezone">Escolha o fuso horário:</label>
-                <select id="timezone">
-                    <option value="America/New_York">Nova Iorque</option>
-                    <option value="Europe/London">Londres</option>
-                    <option value="Asia/Tokyo">Tóquio</option>
-                    <option value="Europe/Paris">Paris</option>
-                </select>
-            </div>
-            <div id="converted-time">Hora convertida: 12:00</div>
-        </section>
+    <!-- Calendário -->
+    <section class="tool">
+      <h2>Calendário</h2>
+      <input type="date" />
+    </section>
 
-    </main>
+    <!-- Alarme -->
+    <section class="tool">
+      <h2>Alarme</h2>
+      <input type="time" id="alarmTime" />
+      <button onclick="setAlarm()">Definir Alarme</button>
+      <div id="alarmStatus" class="output">Nenhum alarme definido</div>
+    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 DiaZen. Todos os direitos reservados.</p>
-    </footer>
+    <!-- Calculadora de Datas -->
+    <section class="tool">
+      <h2>Calculadora de Datas</h2>
+      <input type="date" id="startDate" />
+      <input type="date" id="endDate" />
+      <button onclick="calcDateDiff()">Calcular Diferença</button>
+      <div id="dateDiff" class="output">-- dias</div>
+    </section>
 
+    <!-- Dicas de Produtividade -->
+    <section class="tool">
+      <h2>Dicas de Produtividade</h2>
+      <ul>
+        <li>Use o timer Pomodoro para se concentrar.</li>
+        <li>Durma 8h por noite para melhorar sua performance.</li>
+        <li>Planeje seu dia com antecedência.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 DiaZen – Suas ferramentas favoritas em um só lugar.
+  </footer>
+
+  <script>
+    // Relógio Local
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById("localClock").textContent = now.toLocaleTimeString();
+    }, 1000);
+
+    // Cronômetro
+    let stopwatchInterval, stopwatchSeconds = 0;
+    function startStopwatch() {
+      if (!stopwatchInterval) {
+        stopwatchInterval = setInterval(() => {
+          stopwatchSeconds++;
+          const hrs = Math.floor(stopwatchSeconds / 3600);
+          const mins = Math.floor((stopwatchSeconds % 3600) / 60);
+          const secs = stopwatchSeconds % 60;
+          document.getElementById("stopwatch").textContent =
+            `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }, 1000);
+      }
+    }
+    function stopStopwatch() {
+      clearInterval(stopwatchInterval);
+      stopwatchInterval = null;
+    }
+    function resetStopwatch() {
+      stopStopwatch();
+      stopwatchSeconds = 0;
+      document.getElementById("stopwatch").textContent = "00:00:00";
+    }
+
+    // Timer
+    let timerInterval;
+    function startTimer() {
+      const input = parseInt(document.getElementById("timerInput").value);
+      let secondsLeft = input;
+      timerInterval = setInterval(() => {
+        if (secondsLeft <= 0) {
+          clearInterval(timerInterval);
+          alert("Tempo acabou!");
+        } else {
+          secondsLeft--;
+          const mins = Math.floor(secondsLeft / 60);
+          const secs = secondsLeft % 60;
+          document.getElementById("timerOutput").textContent =
+            `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+      }, 1000);
+    }
+
+    // Relógio Mundial
+    function updateWorldClock() {
+      const timezone = document.getElementById("timezoneSelect").value;
+      const now = new Date().toLocaleTimeString("pt-BR", { timeZone: timezone });
+      document.getElementById("worldClock").textContent = now;
+    }
+    setInterval(updateWorldClock, 1000);
+
+    // Conversor de Fuso
+    function convertTimeZone() {
+      const date = new Date(document.getElementById("convertTime").value);
+      const fromTZ = document.getElementById("fromTZ").value;
+      const toTZ = document.getElementById("toTZ").value;
+
+      const utc = date.toLocaleString("en-US", { timeZone: fromTZ });
+      const converted = new Date(utc).toLocaleTimeString("pt-BR", { timeZone: toTZ });
+      document.getElementById("convertedTime").textContent = converted;
+    }
+
+    // Alarme
+    function setAlarm() {
+      const alarmTime = document.getElementById("alarmTime").value;
+      document.getElementById("alarmStatus").textContent = `Alarme definido para ${alarmTime}`;
+      const alarmInterval = setInterval(() => {
+        const now = new Date();
+        const currentTime = now.toTimeString().substring(0, 5);
+        if (currentTime === alarmTime) {
+          clearInterval(alarmInterval);
+          alert("⏰ Alarme!");
+        }
+      }, 1000);
+    }
+
+    // Data Diferença
+    function calcDateDiff() {
+      const start = new Date(document.getElementById("startDate").value);
+      const end = new Date(document.getElementById("endDate").value);
+      const diffTime = Math.abs(end - start);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById("dateDiff").textContent = `${diffDays} dias`;
+    }
+  </script>
 </body>
 </html>
