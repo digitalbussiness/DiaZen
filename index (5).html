@@ -3,109 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DiaZen - Ferramentas para o seu Dia a Dia</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+  <title>DiaZen - Ferramentas do Dia a Dia</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #fdfcfa, #e0f7fa);
+      background: linear-gradient(to right, #f4f8fb, #e3f0ff);
       color: #333;
-      transition: background 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
+
     header {
-      background-color: #00bcd4;
-      padding: 20px;
-      text-align: center;
-      color: white;
+      background: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    h1 {
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #0077cc;
       margin: 0;
-      font-size: 2.5em;
     }
-    .container {
-      padding: 20px;
-      max-width: 960px;
-      margin: auto;
-    }
-    .tools {
+
+    .tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
     }
+
     .tool {
-      background-color: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       text-align: center;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s;
     }
+
     .tool:hover {
       transform: translateY(-5px);
     }
-    .tool h2 {
-      font-size: 1.2em;
-      margin: 0 0 10px;
+
+    .tool h3 {
+      color: #0077cc;
+      margin-bottom: 0.5rem;
     }
+
     footer {
-      background-color: #00bcd4;
-      color: white;
-      padding: 10px;
       text-align: center;
-      margin-top: 40px;
+      padding: 1rem;
+      background: #fff;
+      font-size: 0.9rem;
+      color: #777;
     }
+
     .dark-mode {
-      background: #121212;
-      color: #e0e0e0;
+      background: #1d1d1d;
+      color: white;
     }
+
     .dark-mode .tool {
-      background-color: #1e1e1e;
-      color: #fff;
+      background: #2a2a2a;
     }
+
+    .dark-mode header, .dark-mode footer {
+      background: #222;
+    }
+
     .tips {
-      margin-top: 40px;
+      max-width: 700px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .dark-mode .tips {
+      background: #2a2a2a;
+    }
+
+    .tips h2 {
+      color: #0077cc;
+    }
+
+    .mode-toggle {
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>DiaZen</h1>
-    <p>Ferramentas simples e úteis para o seu dia a dia</p>
+    <button class="mode-toggle" onclick="toggleMode()">🌓</button>
   </header>
 
-  <div class="container">
-    <div class="tools">
-      <div class="tool"><h2>Cronômetro</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Timer Regressivo</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Relógio Local</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Relógio Mundial</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Conversor de Fuso</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Calendário</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Alarme</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Calculadora de Datas</h2><button onclick="alert('Função em construção')">Abrir</button></div>
-      <div class="tool"><h2>Modo Claro/Escuro</h2><button onclick="toggleDarkMode()">Alternar</button></div>
-    </div>
+  <section class="tools-grid">
+    <div class="tool"><h3>Cronômetro</h3><p>Conte o tempo com precisão.</p></div>
+    <div class="tool"><h3>Timer</h3><p>Defina contagem regressiva.</p></div>
+    <div class="tool"><h3>Relógio Local</h3><p>Veja a hora atual do seu dispositivo.</p></div>
+    <div class="tool"><h3>Relógio Mundial</h3><p>Consulte fusos de várias cidades.</p></div>
+    <div class="tool"><h3>Conversor de Fuso</h3><p>Compare horários entre países.</p></div>
+    <div class="tool"><h3>Calendário</h3><p>Planeje seus dias com facilidade.</p></div>
+    <div class="tool"><h3>Alarme</h3><p>Configure alertas direto no navegador.</p></div>
+    <div class="tool"><h3>Calculadora de Datas</h3><p>Calcule intervalos entre datas.</p></div>
+  </section>
 
-    <div class="tips">
-      <h2>Dicas de Produtividade</h2>
-      <ul>
-        <li>Comece o dia com as tarefas mais importantes.</li>
-        <li>Use o cronômetro para sessões de foco (Pomodoro).</li>
-        <li>Descanse entre blocos de tarefas para manter o foco.</li>
-        <li>Organize sua semana com um calendário visual.</li>
-      </ul>
-    </div>
-  </div>
+  <section class="tips">
+    <h2>Dicas de Produtividade</h2>
+    <ul>
+      <li>Use timers para a técnica Pomodoro.</li>
+      <li>Planeje suas tarefas pela manhã.</li>
+      <li>Evite multitarefas. Foque em uma tarefa por vez.</li>
+      <li>Utilize alarmes e lembretes para pequenas metas do dia.</li>
+    </ul>
+  </section>
 
   <footer>
-    &copy; 2025 DiaZen - Todos os direitos reservados
+    © 2025 DiaZen - Todas as ferramentas que você precisa, em um só lugar.
   </footer>
 
   <script>
-    function toggleDarkMode() {
+    function toggleMode() {
       document.body.classList.toggle("dark-mode");
     }
   </script>
