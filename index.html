@@ -1,146 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DiaZen - Ferramentas do Dia a Dia</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>DiaZen - Ferramentas para o seu dia</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      background: linear-gradient(to right, #f4f8fb, #e3f0ff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
       color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    header {
-      background: #fff;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      padding: 2rem;
     }
-
-    header h1 {
-      font-size: 1.8rem;
-      color: #0077cc;
-      margin: 0;
+    h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
     }
-
-    .tools-grid {
+    .tools {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 2rem;
     }
-
     .tool {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: transform 0.2s;
-    }
-
-    .tool:hover {
-      transform: translateY(-5px);
-    }
-
-    .tool h3 {
-      color: #0077cc;
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
       background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .footer {
+      margin-top: 3rem;
       font-size: 0.9rem;
       color: #777;
     }
-
-    .dark-mode {
-      background: #1d1d1d;
-      color: white;
-    }
-
-    .dark-mode .tool {
-      background: #2a2a2a;
-    }
-
-    .dark-mode header, .dark-mode footer {
-      background: #222;
-    }
-
-    .tips {
-      max-width: 700px;
-      margin: 2rem auto;
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .dark-mode .tips {
-      background: #2a2a2a;
-    }
-
-    .tips h2 {
-      color: #0077cc;
-    }
-
-    .mode-toggle {
-      font-size: 1.2rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.4rem;
-      }
-    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>DiaZen</h1>
-    <button class="mode-toggle" onclick="toggleMode()">🌓</button>
-  </header>
+  <h1>DiaZen ✨</h1>
+  <p>Ferramentas simples para facilitar seu dia a dia!</p>
 
-  <section class="tools-grid">
-    <div class="tool"><h3>Cronômetro</h3><p>Conte o tempo com precisão.</p></div>
-    <div class="tool"><h3>Timer</h3><p>Defina contagem regressiva.</p></div>
-    <div class="tool"><h3>Relógio Local</h3><p>Veja a hora atual do seu dispositivo.</p></div>
-    <div class="tool"><h3>Relógio Mundial</h3><p>Consulte fusos de várias cidades.</p></div>
-    <div class="tool"><h3>Conversor de Fuso</h3><p>Compare horários entre países.</p></div>
-    <div class="tool"><h3>Calendário</h3><p>Planeje seus dias com facilidade.</p></div>
-    <div class="tool"><h3>Alarme</h3><p>Configure alertas direto no navegador.</p></div>
-    <div class="tool"><h3>Calculadora de Datas</h3><p>Calcule intervalos entre datas.</p></div>
-  </section>
+  <div class="tools">
+    <div class="tool">
+      <h2>Cronômetro</h2>
+      <p id="cronometro">00:00:00</p>
+      <button onclick="startCronometro()">Iniciar</button>
+      <button onclick="stopCronometro()">Parar</button>
+      <button onclick="resetCronometro()">Zerar</button>
+    </div>
+    <div class="tool">
+      <h2>Relógio</h2>
+      <p id="clock"></p>
+    </div>
+    <div class="tool">
+      <h2>Alarme</h2>
+      <input type="time" id="alarmTime">
+      <button onclick="setAlarm()">Ativar Alarme</button>
+      <p id="alarmStatus"></p>
+    </div>
+  </div>
 
-  <section class="tips">
-    <h2>Dicas de Produtividade</h2>
-    <ul>
-      <li>Use timers para a técnica Pomodoro.</li>
-      <li>Planeje suas tarefas pela manhã.</li>
-      <li>Evite multitarefas. Foque em uma tarefa por vez.</li>
-      <li>Utilize alarmes e lembretes para pequenas metas do dia.</li>
-    </ul>
-  </section>
-
-  <footer>
-    © 2025 DiaZen - Todas as ferramentas que você precisa, em um só lugar.
-  </footer>
+  <div class="footer">
+    <p>Modo claro/escuro automático em breve | Dicas de produtividade também!<br>Todos os direitos reservados - DiaZen © 2025</p>
+  </div>
 
   <script>
-    function toggleMode() {
-      document.body.classList.toggle("dark-mode");
+    // Relógio ao vivo
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById("clock").textContent = timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Cronômetro
+    let cronInterval;
+    let cronSeconds = 0;
+    function startCronometro() {
+      if (cronInterval) return;
+      cronInterval = setInterval(() => {
+        cronSeconds++;
+        document.getElementById("cronometro").textContent = new Date(cronSeconds * 1000).toISOString().substr(11, 8);
+      }, 1000);
+    }
+    function stopCronometro() {
+      clearInterval(cronInterval);
+      cronInterval = null;
+    }
+    function resetCronometro() {
+      stopCronometro();
+      cronSeconds = 0;
+      document.getElementById("cronometro").textContent = "00:00:00";
+    }
+
+    // Alarme
+    let alarmTimeout;
+    function setAlarm() {
+      const time = document.getElementById("alarmTime").value;
+      if (!time) return;
+      const now = new Date();
+      const [hours, minutes] = time.split(":");
+      const alarmTime = new Date();
+      alarmTime.setHours(hours);
+      alarmTime.setMinutes(minutes);
+      alarmTime.setSeconds(0);
+      const diff = alarmTime - now;
+      if (diff < 0) {
+        document.getElementById("alarmStatus").textContent = "Hora já passou!";
+        return;
+      }
+      document.getElementById("alarmStatus").textContent = `Alarme definido para ${time}`;
+      alarmTimeout = setTimeout(() => {
+        alert("Alarme! ⏰");
+      }, diff);
     }
   </script>
 </body>
+
 </html>
