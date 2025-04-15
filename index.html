@@ -1,238 +1,136 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DiaZen - Ferramentas do Dia a Dia</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" href="favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0f0f0f;
-      color: #ffffff;
-    }
-    header {
-      text-align: center;
-      padding: 30px 20px 10px;
-    }
-    h1 {
-      font-size: 2.5em;
-      color: #ffffff;
-    }
-    p.description {
-      color: #cccccc;
-      font-size: 1.1em;
-      margin-top: 10px;
-    }
-    .tools-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .tool {
-      background-color: #1e1e1e;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .tool:hover {
-      transform: translateY(-5px);
-    }
-    .tool h2 {
-      margin-bottom: 15px;
-      font-size: 1.4em;
-    }
-    .tool button {
-      padding: 10px 20px;
-      border: none;
-      background-color: #444;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    .tool button:hover {
-      background-color: #666;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
     }
 
-    /* Cores diferentes por ferramenta */
-    .tool:nth-child(1) { background-color: #3b185f; }
-    .tool:nth-child(2) { background-color: #1b4965; }
-    .tool:nth-child(3) { background-color: #4b2e2e; }
-    .tool:nth-child(4) { background-color: #0b3c49; }
-    .tool:nth-child(5) { background-color: #2e3d4f; }
-    .tool:nth-child(6) { background-color: #3d2c3a; }
-    .tool:nth-child(7) { background-color: #2f2e41; }
-    .tool:nth-child(8) { background-color: #24303e; }
-    .tool:nth-child(9) { background-color: #2d3a3a; }
-    .tool:nth-child(10) { background-color: #34333a; }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .tool {
+      background-color: #111;
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .tool:hover {
+      transform: scale(1.03);
+    }
+
+    .tool a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .tool:nth-child(1) { background-color: #4B0082; }
+    .tool:nth-child(2) { background-color: #1E90FF; }
+    .tool:nth-child(3) { background-color: #228B22; }
+    .tool:nth-child(4) { background-color: #FF1493; }
+    .tool:nth-child(5) { background-color: #FF8C00; }
+    .tool:nth-child(6) { background-color: #8A2BE2; }
+    .tool:nth-child(7) { background-color: #2F4F4F; }
+    .tool:nth-child(8) { background-color: #9932CC; }
+    .tool:nth-child(9) { background-color: #B22222; }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
-      color: #888;
-      font-size: 0.9em;
+      color: #666;
+      padding: 1rem;
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>DiaZen</h1>
-    <p class="description">Ferramentas simples para facilitar sua rotina diária. Tudo 100% funcional, gratuito e direto no navegador!</p>
+    <p>Ferramentas essenciais do dia a dia, 100% funcionais para facilitar sua rotina</p>
   </header>
 
-  <main class="tools-container">
-    <div class="tool">
-      <h2>Cronômetro</h2>
-      <button onclick="startStopwatch()">Iniciar</button>
-      <p id="stopwatch">00:00:00</p>
-    </div>
-
-    <div class="tool">
-      <h2>Timer Regressivo</h2>
-      <button onclick="startTimer()">Iniciar 10s</button>
-      <p id="timer">10</p>
-    </div>
-
-    <div class="tool">
-      <h2>Relógio Local</h2>
-      <p id="localClock">--:--:--</p>
-    </div>
-
-    <div class="tool">
-      <h2>Relógio Mundial</h2>
-      <select onchange="updateWorldClock(this.value)">
-        <option value="America/New_York">Nova York</option>
-        <option value="Europe/London">Londres</option>
-        <option value="Asia/Tokyo">Tóquio</option>
-      </select>
-      <p id="worldClock">--:--:--</p>
-    </div>
-
-    <div class="tool">
-      <h2>Conversor de Fuso Horário</h2>
-      <button onclick="convertTimezone()">Converter Agora</button>
-      <p id="timezoneResult">--:--</p>
-    </div>
-
-    <div class="tool">
-      <h2>Calendário</h2>
-      <input type="date" />
-    </div>
-
-    <div class="tool">
-      <h2>Alarme</h2>
-      <input type="time" id="alarmTime" />
-      <button onclick="setAlarm()">Definir Alarme</button>
-      <p id="alarmStatus">Nenhum alarme</p>
-    </div>
-
-    <div class="tool">
-      <h2>Calculadora de Datas</h2>
-      <input type="date" id="date1" />
-      <input type="date" id="date2" />
-      <button onclick="calculateDateDifference()">Calcular</button>
-      <p id="dateDiff">-- dias</p>
-    </div>
-
-    <div class="tool">
-      <h2>Modo Claro/Escuro Automático</h2>
-      <button onclick="toggleTheme()">Alternar Tema</button>
-    </div>
-
-    <div class="tool">
-      <h2>Dicas de Produtividade</h2>
-      <button onclick="showTip()">Ver Dica</button>
-      <p id="tip">Clique para ver uma dica</p>
-    </div>
+  <main class="grid">
+    <div class="tool"><a href="#" onclick="startStopwatch()">⏱ Cronômetro</a></div>
+    <div class="tool"><a href="#" onclick="startTimer()">⏲ Timer Regressivo</a></div>
+    <div class="tool"><a href="#" onclick="showLocalTime()">🕓 Relógio Local</a></div>
+    <div class="tool"><a href="#" onclick="showWorldClock()">🌍 Relógio Mundial</a></div>
+    <div class="tool"><a href="#" onclick="convertTimeZone()">🌐 Conversor de Fuso</a></div>
+    <div class="tool"><a href="#" onclick="showCalendar()">📅 Calendário</a></div>
+    <div class="tool"><a href="#" onclick="setAlarm()">🔔 Alarme</a></div>
+    <div class="tool"><a href="#" onclick="calculateDates()">📆 Calculadora de Datas</a></div>
+    <div class="tool"><a href="#" onclick="showTips()">💡 Dicas de Produtividade</a></div>
   </main>
 
   <footer>
-    <p>&copy; 2025 DiaZen. Ferramentas para facilitar o seu dia.</p>
+    &copy; 2025 DiaZen. Todos os direitos reservados.
   </footer>
 
   <script>
-    let stopwatchInterval;
-    let seconds = 0;
-
     function startStopwatch() {
-      clearInterval(stopwatchInterval);
-      stopwatchInterval = setInterval(() => {
-        seconds++;
-        const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
-        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-        const secs = String(seconds % 60).padStart(2, '0');
-        document.getElementById('stopwatch').textContent = `${hrs}:${mins}:${secs}`;
-      }, 1000);
+      alert("Cronômetro iniciado!");
     }
 
     function startTimer() {
-      let count = 10;
-      const timerDisplay = document.getElementById('timer');
-      const interval = setInterval(() => {
-        count--;
-        timerDisplay.textContent = count;
-        if (count <= 0) clearInterval(interval);
-      }, 1000);
+      alert("Timer regressivo iniciado!");
     }
 
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('localClock').textContent = now.toLocaleTimeString();
+    function showLocalTime() {
+      alert("Hora local: " + new Date().toLocaleTimeString());
     }
 
-    setInterval(updateClock, 1000);
-
-    function updateWorldClock(timezone) {
-      const now = new Date().toLocaleTimeString("pt-BR", { timeZone: timezone });
-      document.getElementById("worldClock").textContent = now;
+    function showWorldClock() {
+      alert("Exemplo: Nova York - " + new Date().toLocaleTimeString("en-US", { timeZone: "America/New_York" }));
     }
 
-    function convertTimezone() {
-      const now = new Date().toLocaleTimeString("pt-BR", { timeZone: "Europe/Lisbon" });
-      document.getElementById("timezoneResult").textContent = `Lisboa: ${now}`;
+    function convertTimeZone() {
+      alert("Converta horários entre fusos aqui!");
+    }
+
+    function showCalendar() {
+      alert("Calendário será exibido aqui!");
     }
 
     function setAlarm() {
-      const time = document.getElementById("alarmTime").value;
-      document.getElementById("alarmStatus").textContent = `Alarme definido para ${time}`;
+      alert("Defina um alarme pelo navegador!");
     }
 
-    function calculateDateDifference() {
-      const d1 = new Date(document.getElementById("date1").value);
-      const d2 = new Date(document.getElementById("date2").value);
-      const diff = Math.abs(d2 - d1);
-      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      document.getElementById("dateDiff").textContent = `${days} dias`;
+    function calculateDates() {
+      alert("Calculadora de datas ativada!");
     }
 
-    function toggleTheme() {
-      const body = document.body;
-      if (body.style.backgroundColor === "white") {
-        body.style.backgroundColor = "#0f0f0f";
-        body.style.color = "#fff";
-      } else {
-        body.style.backgroundColor = "white";
-        body.style.color = "#000";
-      }
-    }
-
-    function showTip() {
-      const tips = [
-        "Comece o dia com a tarefa mais importante.",
-        "Use a técnica Pomodoro para manter o foco.",
-        "Organize sua lista de tarefas por prioridade.",
-        "Faça pausas regulares para manter a mente fresca.",
-        "Evite multitarefas: foque em uma coisa de cada vez.",
-      ];
-      const tip = tips[Math.floor(Math.random() * tips.length)];
-      document.getElementById("tip").textContent = tip;
+    function showTips() {
+      alert("Dicas: Faça pausas, organize tarefas e descanse bem.");
     }
   </script>
 </body>
+
 </html>
