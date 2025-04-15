@@ -1,253 +1,157 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DiaZen - Ferramentas do Dia a Dia</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiaZen</title>
+    <link rel="icon" href="favicon.png">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
 
-    header {
-      background: #111;
-      padding: 20px;
-      text-align: center;
-      font-size: 2em;
-      color: #fff;
-    }
+        h1 {
+            color: #fff;
+            font-size: 3rem;
+            margin-top: 20px;
+        }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
+        .description {
+            color: #aaa;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
 
-    .tool {
-      padding: 20px;
-      border-radius: 10px;
-      color: #fff;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
 
-    .tool h2 {
-      margin-top: 0;
-    }
+        .card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
 
-    .relogio-local { background-color: #4B0082; } /* roxo escuro */
-    .cronometro { background-color: #003366; } /* azul escuro */
-    .timer { background-color: #8B4513; } /* marrom dourado escuro */
-    .relogio-mundial { background-color: #006400; } /* verde escuro */
-    .conversor-fuso { background-color: #800000; } /* vermelho escuro */
-    .calendario { background-color: #2F4F4F; } /* cinza escuro */
-    .alarme { background-color: #8B008B; } /* magenta escuro */
-    .calculadora-datas { background-color: #483D8B; } /* azul escuro 2 */
-    .dicas { background-color: #5D3FD3; } /* roxo brilhante escuro */
+        .card:hover {
+            transform: scale(1.05);
+        }
 
-    label, input, select, button, p {
-      display: block;
-      margin: 5px 0;
-      font-size: 1em;
-    }
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
 
-    input, select, button {
-      padding: 5px;
-      border: none;
-      border-radius: 5px;
-      width: 100%;
-    }
+        .card-content {
+            font-size: 1rem;
+            color: #bbb;
+        }
 
-    button {
-      background: #fff;
-      color: #000;
-      cursor: pointer;
-    }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
 
-    button:hover {
-      background: #ccc;
-    }
-  </style>
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .card-1 {
+            background-color: #6A0DAD; /* roxo */
+        }
+
+        .card-2 {
+            background-color: #008CBA; /* azul */
+        }
+
+        .card-3 {
+            background-color: #FF6347; /* vermelho */
+        }
+
+        .card-4 {
+            background-color: #32CD32; /* verde */
+        }
+
+        .card-5 {
+            background-color: #FFD700; /* amarelo */
+        }
+
+        .card-6 {
+            background-color: #FF1493; /* rosa */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header>DiaZen - Ferramentas do Dia a Dia</header>
-  <div class="container">
-    <div class="tool relogio-local">
-      <h2>Relógio Local</h2>
-      <p id="localTime"></p>
-    </div>
-    <div class="tool cronometro">
-      <h2>Cronômetro</h2>
-      <p id="cronometro">00:00:00</p>
-      <button onclick="iniciarCronometro()">Iniciar</button>
-      <button onclick="pararCronometro()">Parar</button>
-      <button onclick="resetarCronometro()">Resetar</button>
-    </div>
-    <div class="tool timer">
-      <h2>Timer Regressivo</h2>
-      <input type="number" id="tempoInput" placeholder="Tempo em segundos" />
-      <p id="timer">00:00</p>
-      <button onclick="iniciarTimer()">Iniciar</button>
-    </div>
-    <div class="tool relogio-mundial">
-      <h2>Relógio Mundial</h2>
-      <select id="citySelect" onchange="atualizarRelogioMundial()">
-        <option value="America/Sao_Paulo">São Paulo</option>
-        <option value="Europe/London">Londres</option>
-        <option value="Asia/Tokyo">Tóquio</option>
-      </select>
-      <p id="worldClock"></p>
-    </div>
-    <div class="tool conversor-fuso">
-      <h2>Conversor de Fuso Horário</h2>
-      <label>Origem</label>
-      <select id="fromTz">
-        <option value="America/Sao_Paulo">São Paulo</option>
-        <option value="UTC">UTC</option>
-        <option value="Europe/London">Londres</option>
-        <option value="Asia/Tokyo">Tóquio</option>
-      </select>
-      <label>Destino</label>
-      <select id="toTz">
-        <option value="America/Sao_Paulo">São Paulo</option>
-        <option value="UTC">UTC</option>
-        <option value="Europe/London">Londres</option>
-        <option value="Asia/Tokyo">Tóquio</option>
-      </select>
-      <input type="datetime-local" id="fromTime" />
-      <button onclick="converterFuso()">Converter</button>
-      <p id="convertedTime"></p>
-    </div>
-    <div class="tool calendario">
-      <h2>Calendário</h2>
-      <input type="date" />
-    </div>
-    <div class="tool alarme">
-      <h2>Alarme</h2>
-      <input type="time" id="alarmeHorario" />
-      <button onclick="definirAlarme()">Definir Alarme</button>
-      <audio id="alarmeSom" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></audio>
-    </div>
-    <div class="tool calculadora-datas">
-      <h2>Calculadora de Datas</h2>
-      <input type="date" id="dataInicial" />
-      <input type="date" id="dataFinal" />
-      <button onclick="calcularDiferencaDatas()">Calcular Diferença</button>
-      <p id="resultadoDatas"></p>
-    </div>
-    <div class="tool dicas">
-      <h2>Dicas de Produtividade</h2>
-      <ul>
-        <li>Use a técnica Pomodoro para manter o foco.</li>
-        <li>Evite multitarefa.</li>
-        <li>Planeje seu dia com antecedência.</li>
-      </ul>
-    </div>
-  </div>
 
-  <script>
-    // Relógio Local
-    function atualizarRelogioLocal() {
-      document.getElementById("localTime").innerText = new Date().toLocaleTimeString();
-    }
-    setInterval(atualizarRelogioLocal, 1000);
-    atualizarRelogioLocal();
+    <h1>Bem-vindo ao DiaZen</h1>
+    <p class="description">O site perfeito para otimizar seu tempo e produtividade! Utilize nossas ferramentas para gerenciar seu dia a dia com mais eficiência.</p>
 
-    // Cronômetro
-    let cronometroInterval, segundos = 0;
-    function formatarTempo(seg) {
-      const h = String(Math.floor(seg / 3600)).padStart(2, '0');
-      const m = String(Math.floor((seg % 3600) / 60)).padStart(2, '0');
-      const s = String(seg % 60).padStart(2, '0');
-      return `${h}:${m}:${s}`;
-    }
-    function iniciarCronometro() {
-      if (cronometroInterval) return;
-      cronometroInterval = setInterval(() => {
-        segundos++;
-        document.getElementById("cronometro").innerText = formatarTempo(segundos);
-      }, 1000);
-    }
-    function pararCronometro() {
-      clearInterval(cronometroInterval);
-      cronometroInterval = null;
-    }
-    function resetarCronometro() {
-      pararCronometro();
-      segundos = 0;
-      document.getElementById("cronometro").innerText = "00:00:00";
-    }
+    <div class="container">
+        <div class="card card-1">
+            <h2 class="card-title">Cronômetro</h2>
+            <p class="card-content">Acompanhe o tempo de suas atividades com nosso cronômetro fácil de usar.</p>
+            <button class="btn">Iniciar</button>
+        </div>
+        <div class="card card-2">
+            <h2 class="card-title">Timer Regresso</h2>
+            <p class="card-content">Defina seu tempo e conte os segundos com nosso timer regressivo.</p>
+            <button class="btn">Iniciar</button>
+        </div>
+        <div class="card card-3">
+            <h2 class="card-title">Relógio Local</h2>
+            <p class="card-content">Veja a hora atual no seu local em tempo real.</p>
+            <button class="btn">Ver Hora</button>
+        </div>
+        <div class="card card-4">
+            <h2 class="card-title">Relógio Mundial</h2>
+            <p class="card-content">Veja o horário atual de várias cidades ao redor do mundo.</p>
+            <button class="btn">Ver Hora</button>
+        </div>
+        <div class="card card-5">
+            <h2 class="card-title">Conversor de Fuso Horário</h2>
+            <p class="card-content">Converta fusos horários de diferentes países rapidamente.</p>
+            <button class="btn">Converter</button>
+        </div>
+        <div class="card card-6">
+            <h2 class="card-title">Calendário Interativo</h2>
+            <p class="card-content">Navegue pelos dias e semanas com nosso calendário interativo.</p>
+            <button class="btn">Ver Calendário</button>
+        </div>
+    </div>
 
-    // Timer Regressivo
-    let timerInterval;
-    function iniciarTimer() {
-      let tempo = parseInt(document.getElementById("tempoInput").value);
-      if (isNaN(tempo)) return;
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        if (tempo <= 0) {
-          clearInterval(timerInterval);
-          alert("Tempo encerrado!");
-          return;
-        }
-        document.getElementById("timer").innerText = formatarTempo(tempo);
-        tempo--;
-      }, 1000);
-    }
+    <footer>
+        <p>&copy; 2025 DiaZen. Todos os direitos reservados.</p>
+    </footer>
 
-    // Relógio Mundial
-    function atualizarRelogioMundial() {
-      const zona = document.getElementById("citySelect").value;
-      const now = new Date().toLocaleTimeString("pt-BR", { timeZone: zona });
-      document.getElementById("worldClock").innerText = now;
-    }
-    setInterval(atualizarRelogioMundial, 1000);
-    atualizarRelogioMundial();
-
-    // Conversor de Fuso Horário
-    function converterFuso() {
-      const fromTz = document.getElementById("fromTz").value;
-      const toTz = document.getElementById("toTz").value;
-      const fromTime = new Date(document.getElementById("fromTime").value);
-      if (!fromTime.getTime()) return;
-      const utc = fromTime.toLocaleString("en-US", { timeZone: fromTz });
-      const converted = new Date(utc).toLocaleString("pt-BR", { timeZone: toTz });
-      document.getElementById("convertedTime").innerText = converted;
-    }
-
-    // Alarme
-    function definirAlarme() {
-      const alarmeHorario = document.getElementById("alarmeHorario").value;
-      if (!alarmeHorario) return alert("Defina um horário válido.");
-      const agora = new Date();
-      const alarme = new Date();
-      const [h, m] = alarmeHorario.split(":");
-      alarme.setHours(h, m, 0);
-      const tempo = alarme.getTime() - agora.getTime();
-      if (tempo < 0) return alert("Horário inválido ou já passou.");
-      setTimeout(() => {
-        document.getElementById("alarmeSom").play();
-        alert("⏰ Alarme!");
-      }, tempo);
-      alert("Alarme definido!");
-    }
-
-    // Calculadora de Datas
-    function calcularDiferencaDatas() {
-      const dataInicial = new Date(document.getElementById("dataInicial").value);
-      const dataFinal = new Date(document.getElementById("dataFinal").value);
-      if (!dataInicial || !dataFinal) return;
-      const diff = Math.abs(dataFinal - dataInicial);
-      const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      document.getElementById("resultadoDatas").innerText = `${dias} dias`;
-    }
-  </script>
 </body>
 
 </html>
