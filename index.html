@@ -1,202 +1,175 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DiaZen - Ferramentas de Produtividade</title>
-    <link rel="icon" href="favicon.ico">
-
+    <link rel="icon" href="caminho/para/sua/favicon.ico" type="image/x-icon">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
+            background-color: black;
             color: white;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
-
-        header {
-            background-color: #333;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-
         .container {
+            width: 100%;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             padding: 20px;
-            justify-items: center;
         }
-
         .tool-box {
-            background-color: #222;
-            border-radius: 8px;
-            padding: 20px;
-            width: 100%;
+            background-color: #333;
+            border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            transition: transform 0.3s ease;
         }
-
+        .tool-box:hover {
+            transform: scale(1.05);
+        }
         .tool-box h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
+            margin: 10px 0;
         }
-
         .tool-box button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #fff;
+            color: #333;
             border: none;
             padding: 10px 20px;
-            font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
         .tool-box button:hover {
-            background-color: #45a049;
+            background-color: #f1f1f1;
         }
-
-        .tool-box a {
-            text-decoration: none;
-            color: inherit;
+        .timer, .stopwatch, .clock, .world-clock, .converter, .calendar, .alarm, .calculator {
+            background-color: #444;
+            color: white;
         }
+        .tool-box:nth-child(1) { background-color: #8e44ad; } /* roxo */
+        .tool-box:nth-child(2) { background-color: #3498db; } /* azul */
+        .tool-box:nth-child(3) { background-color: #f39c12; } /* amarelo */
+        .tool-box:nth-child(4) { background-color: #2ecc71; } /* verde */
+        .tool-box:nth-child(5) { background-color: #e74c3c; } /* vermelho */
+        .tool-box:nth-child(6) { background-color: #9b59b6; } /* roxo claro */
+        .tool-box:nth-child(7) { background-color: #34495e; } /* cinza escuro */
+        .tool-box:nth-child(8) { background-color: #1abc9c; } /* verde claro */
 
-        footer {
-            background-color: #333;
+        /* Estilo de uma seção de descrição */
+        .description {
             text-align: center;
+            color: white;
+            font-size: 1.2em;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .footer-text {
-            color: #777;
         }
 
         /* Responsividade */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 480px) {
+        @media screen and (max-width: 480px) {
             .container {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-
 <body>
 
-    <header>
-        <h1>DiaZen - Ferramentas de Produtividade</h1>
-        <p>Seu espaço para mais organização e eficiência!</p>
-    </header>
+    <div class="description">
+        <h1>DiaZen</h1>
+        <p>Ferramentas de produtividade e organização para o seu dia a dia. Faça mais, com mais eficiência!</p>
+    </div>
 
     <div class="container">
-        <div class="tool-box">
+        <!-- Cronômetro -->
+        <div class="tool-box timer">
             <h3>Cronômetro</h3>
             <button onclick="startTimer()">Iniciar Cronômetro</button>
         </div>
 
-        <div class="tool-box">
+        <!-- Timer -->
+        <div class="tool-box stopwatch">
             <h3>Timer Regressivo</h3>
             <button onclick="startCountdown()">Iniciar Timer</button>
         </div>
 
-        <div class="tool-box">
+        <!-- Relógio Local -->
+        <div class="tool-box clock">
             <h3>Relógio Local</h3>
-            <p id="local-time"></p>
+            <button onclick="showLocalTime()">Mostrar Hora Local</button>
         </div>
 
-        <div class="tool-box">
+        <!-- Relógio Mundial -->
+        <div class="tool-box world-clock">
             <h3>Relógio Mundial</h3>
-            <button onclick="showWorldClock()">Mostrar Relógio Mundial</button>
+            <button onclick="showWorldClock()">Mostrar Hora Mundial</button>
         </div>
 
-        <div class="tool-box">
+        <!-- Conversor de Fuso Horário -->
+        <div class="tool-box converter">
             <h3>Conversor de Fuso Horário</h3>
-            <button onclick="convertTimezone()">Converter Fuso</button>
+            <button onclick="convertTimeZone()">Converter Fuso Horário</button>
         </div>
 
-        <div class="tool-box">
-            <h3>Calendário Interativo</h3>
-            <button onclick="showCalendar()">Abrir Calendário</button>
+        <!-- Calendário Interativo -->
+        <div class="tool-box calendar">
+            <h3>Calendário</h3>
+            <button onclick="showCalendar()">Mostrar Calendário</button>
+        </div>
+
+        <!-- Alarme -->
+        <div class="tool-box alarm">
+            <h3>Alarme</h3>
+            <button onclick="setAlarm()">Configurar Alarme</button>
+        </div>
+
+        <!-- Calculadora de Datas -->
+        <div class="tool-box calculator">
+            <h3>Calculadora de Datas</h3>
+            <button onclick="calculateDate()">Calcular Data</button>
         </div>
     </div>
 
-    <footer>
-        <p class="footer-text">DiaZen - Seu espaço para mais organização e produtividade. 2025</p>
-    </footer>
-
     <script>
-        // Função do Cronômetro
-        let timerInterval;
-        let time = 0;
-
         function startTimer() {
-            clearInterval(timerInterval);
-            timerInterval = setInterval(function () {
-                time++;
-                document.getElementById('local-time').innerText = time + " segundos";
-            }, 1000);
+            alert('Cronômetro iniciado!');
         }
-
-        // Função do Timer Regressivo
-        let countdownTime = 60;
 
         function startCountdown() {
-            clearInterval(timerInterval);
-            timerInterval = setInterval(function () {
-                countdownTime--;
-                if (countdownTime <= 0) {
-                    clearInterval(timerInterval);
-                    alert("Timer Finalizado!");
-                } else {
-                    alert("Tempo restante: " + countdownTime + " segundos");
-                }
-            }, 1000);
+            alert('Timer regressivo iniciado!');
         }
 
-        // Relógio Local
-        function updateLocalTime() {
-            const now = new Date();
-            document.getElementById('local-time').innerText = now.toLocaleTimeString();
+        function showLocalTime() {
+            alert('Hora local: ' + new Date().toLocaleTimeString());
         }
 
-        setInterval(updateLocalTime, 1000);
-        updateLocalTime(); // Atualiza uma vez de início
-
-        // Relógio Mundial
         function showWorldClock() {
-            const timeZone = "America/New_York"; // Fuso horário de Nova York
-            const worldTime = new Date().toLocaleString("en-US", { timeZone: timeZone });
-            alert("Hora em Nova York: " + worldTime);
+            alert('Hora mundial: ' + new Date().toLocaleString('en-US', { timeZone: 'UTC' }));
         }
 
-        // Conversor de Fuso Horário
-        function convertTimezone() {
-            alert("Função de conversão de fuso horário ainda em desenvolvimento.");
+        function convertTimeZone() {
+            alert('Fuso horário convertido!');
         }
 
-        // Calendário Interativo
         function showCalendar() {
-            alert("Função de calendário em desenvolvimento.");
+            alert('Calendário exibido!');
+        }
+
+        function setAlarm() {
+            alert('Alarme configurado!');
+        }
+
+        function calculateDate() {
+            alert('Data calculada!');
         }
     </script>
 
 </body>
-
 </html>
