@@ -3,124 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DiaZen - Ferramentas do Dia a Dia</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>DiaZen - Ferramentas Inteligentes</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
     body {
       margin: 0;
-      background-color: #0a0a0a;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      font-family: Arial, sans-serif;
       color: #fff;
     }
     header {
       text-align: center;
       padding: 2rem;
-      background: linear-gradient(to right, #9b59b6, #3498db);
-      font-size: 2rem;
-      font-weight: bold;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+    p.descricao {
+      font-size: 1.2rem;
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .tool {
+      background-color: #111;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s;
       color: white;
     }
-    .descricao {
-      text-align: center;
-      padding: 1rem;
-      font-size: 1.1rem;
-      color: #ccc;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 2rem;
-    }
-    .box {
-      background-color: #1e1e1e;
-      border-radius: 10px;
-      padding: 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: transform 0.2s ease-in-out;
-    }
-    .box:hover {
+    .tool:hover {
       transform: scale(1.05);
     }
-    .roxo { background-color: #6c5ce7; }
-    .azul { background-color: #0984e3; }
-    .amarelo { background-color: #fdcb6e; color: #000; }
-    .verde { background-color: #00b894; }
-    .rosa { background-color: #e84393; }
-    .laranja { background-color: #e17055; }
-    .cyan { background-color: #00cec9; }
-    .escuro { background-color: #2d3436; }
-    iframe {
+    .tool:nth-child(6n+1) { background-color: #6a0dad; }  /* roxo */
+    .tool:nth-child(6n+2) { background-color: #1e90ff; }  /* azul */
+    .tool:nth-child(6n+3) { background-color: #ffd700; color: #000; }  /* amarelo */
+    .tool:nth-child(6n+4) { background-color: #228b22; }  /* verde */
+    .tool:nth-child(6n+5) { background-color: #ff1493; }  /* rosa */
+    .tool:nth-child(6n+6) { background-color: #ff4500; }  /* laranja escuro */
+    .monetag-space {
+      margin: 2rem auto;
+      text-align: center;
+    }
+    iframe.ad-zone {
       width: 100%;
-      height: 300px;
+      max-width: 728px;
+      height: 90px;
       border: none;
-      background-color: #111;
-      color: #fff;
+    }
+    @media screen and (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <header>DiaZen</header>
-  <p class="descricao">
-    Ferramentas essenciais do dia a dia reunidas num só lugar. Simples, rápidas e práticas para você ser mais produtivo com estilo.
-  </p>
-  <div class="grid">
-    <div class="box roxo" onclick="openTool('cronometro')">Cronômetro</div>
-    <div class="box azul" onclick="openTool('timer')">Timer Regressivo</div>
-    <div class="box amarelo" onclick="openTool('relogio')">Relógio Local</div>
-    <div class="box verde" onclick="openTool('relogioMundial')">Relógio Mundial</div>
-    <div class="box rosa" onclick="openTool('fuso')">Conversor de Fuso Horário</div>
-    <div class="box laranja" onclick="openTool('calendario')">Calendário Interativo</div>
-    <div class="box cyan" onclick="openTool('alarme')">Alarme no Navegador</div>
-    <div class="box escuro" onclick="openTool('datas')">Calculadora de Datas</div>
-    <div class="box roxo" onclick="openTool('modo')">Modo Claro/Escuro Automático</div>
-    <div class="box azul" onclick="openTool('dicas')">Dicas de Produtividade</div>
+  <header>
+    <h1>DiaZen</h1>
+    <p class="descricao">Ferramentas online inteligentes para facilitar o seu dia a dia. Simples, rápidas e gratuitas!</p>
+  </header>
+
+  <div class="monetag-space">
+    <!-- Espaço para anúncio da Monetag -->
+    <iframe class="ad-zone" src="/ads/728x90.html"></iframe>
   </div>
 
-  <div id="ferramenta" style="padding: 2rem;"></div>
+  <main class="container">
+    <div class="tool"><a href="relogio-mundial.html">Relógio Mundial</a></div>
+    <div class="tool"><a href="cronometro.html">Cronômetro</a></div>
+    <div class="tool"><a href="temporizador.html">Timer Regressivo</a></div>
+    <div class="tool"><a href="calculadora.html">Calculadora</a></div>
+    <div class="tool"><a href="conversor-moeda.html">Conversor de Moeda</a></div>
+    <div class="tool"><a href="calendario.html">Calendário</a></div>
+    <div class="tool"><a href="gerador-senhas.html">Gerador de Senhas</a></div>
+    <div class="tool"><a href="conversor-unidades.html">Conversor de Unidades</a></div>
+    <div class="tool"><a href="calculadora-datas.html">Calculadora de Datas</a></div>
+    <div class="tool"><a href="conversor-fuso.html">Conversor de Fuso Horário</a></div>
+  </main>
 
-  <script>
-    function openTool(tool) {
-      const ferramenta = document.getElementById('ferramenta');
-      switch(tool) {
-        case 'cronometro':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/cronometro"></iframe>`;
-          break;
-        case 'timer':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/timer"></iframe>`;
-          break;
-        case 'relogio':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/relogio"></iframe>`;
-          break;
-        case 'relogioMundial':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/relogio-mundial"></iframe>`;
-          break;
-        case 'fuso':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/conversor-fuso"></iframe>`;
-          break;
-        case 'calendario':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/calendario"></iframe>`;
-          break;
-        case 'alarme':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/alarme"></iframe>`;
-          break;
-        case 'datas':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/calculadora-datas"></iframe>`;
-          break;
-        case 'modo':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/modo-claro-escuro"></iframe>`;
-          break;
-        case 'dicas':
-          ferramenta.innerHTML = `<iframe src="https://jade-ia-tools.vercel.app/tools/dicas-produtividade"></iframe>`;
-          break;
-        default:
-          ferramenta.innerHTML = '';
-      }
-    }
-  </script>
+  <div class="monetag-space">
+    <!-- Outro espaço para anúncio da Monetag -->
+    <iframe class="ad-zone" src="/ads/728x90.html"></iframe>
+  </div>
 </body>
 </html>
