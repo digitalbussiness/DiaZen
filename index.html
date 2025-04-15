@@ -3,98 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DiaZen - Ferramentas Inteligentes</title>
+  <title>DiaZen - Ferramentas Úteis</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
     body {
       margin: 0;
-      background-color: #000;
-      font-family: Arial, sans-serif;
+      background-color: #111;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
     }
     header {
       text-align: center;
-      padding: 2rem;
+      padding: 40px 20px 10px;
     }
-    h1 {
-      font-size: 2.5rem;
-      color: #fff;
+    header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(90deg, #f09, #06f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    p.descricao {
-      font-size: 1.2rem;
-      color: #aaa;
-      max-width: 600px;
-      margin: 0 auto 2rem;
+    header p {
+      margin-top: 8px;
+      font-size: 1.1rem;
+      color: #ccc;
     }
-    .container {
+    .tools-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      padding: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 30px;
       max-width: 1200px;
       margin: auto;
     }
     .tool {
-      background-color: #111;
-      border-radius: 10px;
-      padding: 2rem;
-      text-align: center;
-      transition: transform 0.3s;
+      padding: 25px;
+      border-radius: 12px;
       color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: transform 0.2s;
     }
     .tool:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
-    .tool:nth-child(6n+1) { background-color: #6a0dad; }  /* roxo */
-    .tool:nth-child(6n+2) { background-color: #1e90ff; }  /* azul */
-    .tool:nth-child(6n+3) { background-color: #ffd700; color: #000; }  /* amarelo */
-    .tool:nth-child(6n+4) { background-color: #228b22; }  /* verde */
-    .tool:nth-child(6n+5) { background-color: #ff1493; }  /* rosa */
-    .tool:nth-child(6n+6) { background-color: #ff4500; }  /* laranja escuro */
-    .monetag-space {
-      margin: 2rem auto;
+    .tool-1 { background: #6a0dad; }
+    .tool-2 { background: #0077cc; }
+    .tool-3 { background: #e91e63; }
+    .tool-4 { background: #009688; }
+    .tool-5 { background: #ff5722; }
+    .tool-6 { background: #3f51b5; }
+    .tool-7 { background: #8bc34a; }
+    .tool-8 { background: #ff9800; }
+    .tool-9 { background: #9c27b0; }
+    footer {
       text-align: center;
-    }
-    iframe.ad-zone {
-      width: 100%;
-      max-width: 728px;
-      height: 90px;
-      border: none;
-    }
-    @media screen and (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
+      color: #aaa;
+      font-size: 0.9rem;
+      padding: 20px;
     }
   </style>
+  <!-- Monetag Scripts com Bypass Adblock -->
+  <script>
+    // Monetag exemplo (coloque seus códigos reais nos espaços indicados)
+    (function(){
+      var s = document.createElement('script');
+      s.src = "https://www.highperformancecpmgate.com/invoke.js";
+      s.setAttribute('data-cfasync', 'false');
+      s.async = true;
+      s.onload = function() {
+        // Bypass Adblock integrado
+        try {
+          window['__mo_config'] = {
+            zoneIds: [9177371,9177372,9177373,9177374,9177375,9176783,9176782,9176781,9176780,9176779]
+          };
+        } catch(e) {}
+      };
+      document.head.appendChild(s);
+    })();
+  </script>
 </head>
 <body>
   <header>
     <h1>DiaZen</h1>
-    <p class="descricao">Ferramentas online inteligentes para facilitar o seu dia a dia. Simples, rápidas e gratuitas!</p>
+    <p>Simplifique sua vida com nossas ferramentas online práticas e rápidas</p>
   </header>
-
-  <div class="monetag-space">
-    <!-- Espaço para anúncio da Monetag -->
-    <iframe class="ad-zone" src="/ads/728x90.html"></iframe>
+  <div class="tools-container">
+    <a href="/cronometro" class="tool tool-1">Cronômetro</a>
+    <a href="/timer-regressivo" class="tool tool-2">Timer Regressivo</a>
+    <a href="/calculadora-de-datas" class="tool tool-3">Calculadora de Datas</a>
+    <a href="/relógio-mundial" class="tool tool-4">Relógio Mundial</a>
+    <a href="/conversor-de-fuso" class="tool tool-5">Conversor de Fuso Horário</a>
+    <a href="/bloco-de-notas" class="tool tool-6">Bloco de Notas</a>
+    <a href="/gerador-de-senhas" class="tool tool-7">Gerador de Senhas</a>
+    <a href="/lista-de-compras" class="tool tool-8">Lista de Compras</a>
+    <a href="/contador-de-caracteres" class="tool tool-9">Contador de Caracteres</a>
   </div>
-
-  <main class="container">
-    <div class="tool"><a href="relogio-mundial.html">Relógio Mundial</a></div>
-    <div class="tool"><a href="cronometro.html">Cronômetro</a></div>
-    <div class="tool"><a href="temporizador.html">Timer Regressivo</a></div>
-    <div class="tool"><a href="calculadora.html">Calculadora</a></div>
-    <div class="tool"><a href="conversor-moeda.html">Conversor de Moeda</a></div>
-    <div class="tool"><a href="calendario.html">Calendário</a></div>
-    <div class="tool"><a href="gerador-senhas.html">Gerador de Senhas</a></div>
-    <div class="tool"><a href="conversor-unidades.html">Conversor de Unidades</a></div>
-    <div class="tool"><a href="calculadora-datas.html">Calculadora de Datas</a></div>
-    <div class="tool"><a href="conversor-fuso.html">Conversor de Fuso Horário</a></div>
-  </main>
-
-  <div class="monetag-space">
-    <!-- Outro espaço para anúncio da Monetag -->
-    <iframe class="ad-zone" src="/ads/728x90.html"></iframe>
-  </div>
+  <footer>
+    &copy; 2025 DiaZen - Todos os direitos reservados
+  </footer>
 </body>
 </html>
