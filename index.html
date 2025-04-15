@@ -4,153 +4,112 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DiaZen - Ferramentas do Dia a Dia</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
       color: #fff;
     }
     header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 1rem;
     }
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      margin: 0;
     }
-    p.desc {
-      font-size: 1.1rem;
-      color: #aaa;
+    p {
+      font-size: 1rem;
+      color: #ccc;
     }
-    .tools-container {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
       padding: 2rem;
     }
     .tool {
-      padding: 1.5rem;
+      background: #222;
       border-radius: 10px;
-      background-color: #1e1e1e;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      padding: 1.5rem;
       text-align: center;
-    }
-    .tool:nth-child(1) { background-color: #7b1fa2; } /* Roxo */
-    .tool:nth-child(2) { background-color: #0288d1; } /* Azul */
-    .tool:nth-child(3) { background-color: #fbc02d; color: #000; } /* Amarelo */
-    .tool:nth-child(4) { background-color: #388e3c; } /* Verde */
-    .tool:nth-child(5) { background-color: #e91e63; } /* Rosa */
-    .tool h2 {
-      margin-bottom: 1rem;
-    }
-    input, button, select {
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: none;
-      margin-top: 0.5rem;
-    }
-    button {
-      background-color: #fff;
-      color: #000;
+      transition: transform 0.2s;
       cursor: pointer;
+    }
+    .tool:hover {
+      transform: scale(1.05);
+    }
+    .tool h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+      background-color: #000;
+    }
+    .tool:nth-child(1) { background-color: #6a0dad; } /* roxo */
+    .tool:nth-child(2) { background-color: #007bff; } /* azul */
+    .tool:nth-child(3) { background-color: #ffc107; color: #000; } /* amarelo */
+    .tool:nth-child(4) { background-color: #28a745; } /* verde */
+    .tool:nth-child(5) { background-color: #e83e8c; } /* rosa */
+    .tool:nth-child(6) { background-color: #17a2b8; } /* ciano */
+    .tool:nth-child(7) { background-color: #fd7e14; } /* laranja */
+    .tool:nth-child(8) { background-color: #20c997; } /* verde água */
+    .tool:nth-child(9) { background-color: #6610f2; } /* roxo escuro */
+
+    @media (max-width: 768px) {
+      iframe { height: 300px; }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>DiaZen</h1>
-    <p class="desc">Ferramentas práticas e gratuitas para te ajudar no dia a dia!</p>
+    <p>Ferramentas simples e úteis para seu dia a dia – tudo em um só lugar!</p>
   </header>
 
-  <div class="tools-container">
-    <!-- Cronômetro -->
+  <section class="grid">
     <div class="tool">
       <h2>Cronômetro</h2>
-      <div id="cronometro">00:00:00</div>
-      <button onclick="iniciarCronometro()">Iniciar</button>
-      <button onclick="pausarCronometro()">Pausar</button>
-      <button onclick="resetarCronometro()">Resetar</button>
+      <iframe src="https://online-stopwatch.com/simple-timer/" title="Cronômetro"></iframe>
     </div>
-
-    <!-- Timer -->
     <div class="tool">
       <h2>Timer Regressivo</h2>
-      <input type="number" id="minutos" placeholder="Minutos" />
-      <div id="timer">00:00</div>
-      <button onclick="iniciarTimer()">Iniciar</button>
-      <button onclick="pararTimer()">Parar</button>
+      <iframe src="https://vclock.com/timer/" title="Timer Regressivo"></iframe>
     </div>
-
-    <!-- Calculadora de Datas -->
+    <div class="tool">
+      <h2>Relógio Local</h2>
+      <iframe src="https://24timezones.com/current_time/brazil.php" title="Relógio Local"></iframe>
+    </div>
+    <div class="tool">
+      <h2>Relógio Mundial</h2>
+      <iframe src="https://24timezones.com/world_directory/time.htm" title="Relógio Mundial"></iframe>
+    </div>
+    <div class="tool">
+      <h2>Conversor de Fuso</h2>
+      <iframe src="https://www.timeanddate.com/worldclock/converter.html" title="Conversor de Fuso Horário"></iframe>
+    </div>
+    <div class="tool">
+      <h2>Calendário</h2>
+      <iframe src="https://calendar.google.com/calendar/embed?src=pt.brazilian%23holiday%40group.v.calendar.google.com&ctz=America%2FSao_Paulo" title="Calendário"></iframe>
+    </div>
+    <div class="tool">
+      <h2>Alarme</h2>
+      <iframe src="https://kukuklok.com/" title="Alarme"></iframe>
+    </div>
     <div class="tool">
       <h2>Calculadora de Datas</h2>
-      <input type="date" id="data1" />
-      <input type="date" id="data2" />
-      <button onclick="calcularDatas()">Calcular Diferença</button>
-      <div id="resultadoDatas"></div>
+      <iframe src="https://www.timeanddate.com/date/dateadd.html" title="Calculadora de Datas"></iframe>
     </div>
-  </div>
-
-  <script>
-    // Cronômetro
-    let cronometroInterval, segundos = 0;
-    function formatarTempo(s) {
-      let h = Math.floor(s / 3600);
-      let m = Math.floor((s % 3600) / 60);
-      let sec = s % 60;
-      return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-    }
-    function iniciarCronometro() {
-      if (!cronometroInterval) {
-        cronometroInterval = setInterval(() => {
-          segundos++;
-          document.getElementById("cronometro").textContent = formatarTempo(segundos);
-        }, 1000);
-      }
-    }
-    function pausarCronometro() {
-      clearInterval(cronometroInterval);
-      cronometroInterval = null;
-    }
-    function resetarCronometro() {
-      pausarCronometro();
-      segundos = 0;
-      document.getElementById("cronometro").textContent = "00:00:00";
-    }
-
-    // Timer Regressivo
-    let timerInterval;
-    function iniciarTimer() {
-      let min = parseInt(document.getElementById("minutos").value);
-      if (isNaN(min) || min <= 0) return;
-      let total = min * 60;
-      timerInterval = setInterval(() => {
-        if (total <= 0) {
-          clearInterval(timerInterval);
-          alert("Tempo finalizado!");
-          return;
-        }
-        total--;
-        let m = Math.floor(total / 60);
-        let s = total % 60;
-        document.getElementById("timer").textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-      }, 1000);
-    }
-    function pararTimer() {
-      clearInterval(timerInterval);
-    }
-
-    // Calculadora de Datas
-    function calcularDatas() {
-      let d1 = new Date(document.getElementById("data1").value);
-      let d2 = new Date(document.getElementById("data2").value);
-      if (!d1 || !d2 || isNaN(d1) || isNaN(d2)) return;
-      let diff = Math.abs(d2 - d1);
-      let dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      document.getElementById("resultadoDatas").textContent = `${dias} dia(s) de diferença.`;
-    }
-  </script>
+    <div class="tool">
+      <h2>Dicas de Produtividade</h2>
+      <iframe src="https://zapier.com/blog/productivity-tips/" title="Dicas de Produtividade"></iframe>
+    </div>
+  </section>
 </body>
 </html>
