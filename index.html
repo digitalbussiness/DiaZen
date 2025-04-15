@@ -1,83 +1,202 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DiaZen - Ferramentas do Dia a Dia</title>
-    <link rel="icon" href="favicon.png" type="image/png" />
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #111;
-        color: #f0f0f0;
-        padding: 20px;
-      }
-      h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 2.2rem;
-        color: #fff;
-      }
-      .descricao {
-        text-align: center;
-        margin-bottom: 40px;
-        font-size: 1.1rem;
-        color: #ccc;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-      }
-      .card {
-        padding: 30px;
-        border-radius: 15px;
-        text-align: center;
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.1rem;
-        transition: transform 0.3s, opacity 0.3s;
-      }
-      .card:hover {
-        transform: scale(1.05);
-        opacity: 0.9;
-      }
-      .cronometro { background-color: #7b2cbf; }
-      .timer { background-color: #4361ee; }
-      .relogio { background-color: #3a0ca3; }
-      .relogio-mundial { background-color: #4895ef; }
-      .conversor { background-color: #4cc9f0; }
-      .calendario { background-color: #7209b7; }
-      .alarme { background-color: #f72585; }
-      .datas { background-color: #b5179e; }
-      .dicas { background-color: #560bad; }
-      @media (max-width: 600px) {
-        .card { font-size: 1rem; padding: 20px; }
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Bem-vindo ao DiaZen</h1>
-    <p class="descricao">
-      Ferramentas simples, úteis e gratuitas para facilitar seu dia a dia. Cronômetro, alarmes, calendário e muito mais com visual moderno e prático!
-    </p>
 
-    <div class="grid">
-      <a href="cronometro.html" class="card cronometro">⏱️ Cronômetro</a>
-      <a href="timer.html" class="card timer">⏳ Timer Regressivo</a>
-      <a href="relogio.html" class="card relogio">🕒 Relógio Local</a>
-      <a href="relogio-mundial.html" class="card relogio-mundial">🌎 Relógio Mundial</a>
-      <a href="conversor-tempo.html" class="card conversor">🕐 Conversor de Fuso Horário</a>
-      <a href="calendario.html" class="card calendario">📅 Calendário Interativo</a>
-      <a href="alarme.html" class="card alarme">🔔 Alarme via Navegador</a>
-      <a href="calculadora-datas.html" class="card datas">📆 Calculadora de Datas</a>
-      <a href="dicas.html" class="card dicas">💡 Dicas de Produtividade</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DiaZen - Ferramentas de Produtividade</title>
+    <link rel="icon" href="favicon.ico">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        .tool-box {
+            background-color: #222;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-box h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .tool-box button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tool-box button:hover {
+            background-color: #45a049;
+        }
+
+        .tool-box a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer {
+            background-color: #333;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-text {
+            color: #777;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DiaZen - Ferramentas de Produtividade</h1>
+        <p>Seu espaço para mais organização e eficiência!</p>
+    </header>
+
+    <div class="container">
+        <div class="tool-box">
+            <h3>Cronômetro</h3>
+            <button onclick="startTimer()">Iniciar Cronômetro</button>
+        </div>
+
+        <div class="tool-box">
+            <h3>Timer Regressivo</h3>
+            <button onclick="startCountdown()">Iniciar Timer</button>
+        </div>
+
+        <div class="tool-box">
+            <h3>Relógio Local</h3>
+            <p id="local-time"></p>
+        </div>
+
+        <div class="tool-box">
+            <h3>Relógio Mundial</h3>
+            <button onclick="showWorldClock()">Mostrar Relógio Mundial</button>
+        </div>
+
+        <div class="tool-box">
+            <h3>Conversor de Fuso Horário</h3>
+            <button onclick="convertTimezone()">Converter Fuso</button>
+        </div>
+
+        <div class="tool-box">
+            <h3>Calendário Interativo</h3>
+            <button onclick="showCalendar()">Abrir Calendário</button>
+        </div>
     </div>
-  </body>
+
+    <footer>
+        <p class="footer-text">DiaZen - Seu espaço para mais organização e produtividade. 2025</p>
+    </footer>
+
+    <script>
+        // Função do Cronômetro
+        let timerInterval;
+        let time = 0;
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(function () {
+                time++;
+                document.getElementById('local-time').innerText = time + " segundos";
+            }, 1000);
+        }
+
+        // Função do Timer Regressivo
+        let countdownTime = 60;
+
+        function startCountdown() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(function () {
+                countdownTime--;
+                if (countdownTime <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Timer Finalizado!");
+                } else {
+                    alert("Tempo restante: " + countdownTime + " segundos");
+                }
+            }, 1000);
+        }
+
+        // Relógio Local
+        function updateLocalTime() {
+            const now = new Date();
+            document.getElementById('local-time').innerText = now.toLocaleTimeString();
+        }
+
+        setInterval(updateLocalTime, 1000);
+        updateLocalTime(); // Atualiza uma vez de início
+
+        // Relógio Mundial
+        function showWorldClock() {
+            const timeZone = "America/New_York"; // Fuso horário de Nova York
+            const worldTime = new Date().toLocaleString("en-US", { timeZone: timeZone });
+            alert("Hora em Nova York: " + worldTime);
+        }
+
+        // Conversor de Fuso Horário
+        function convertTimezone() {
+            alert("Função de conversão de fuso horário ainda em desenvolvimento.");
+        }
+
+        // Calendário Interativo
+        function showCalendar() {
+            alert("Função de calendário em desenvolvimento.");
+        }
+    </script>
+
+</body>
+
 </html>
