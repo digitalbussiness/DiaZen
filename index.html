@@ -36,7 +36,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
@@ -71,12 +71,6 @@
     .card p {
       font-size: 0.9rem;
       color: #f0f0f0;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
     }
   </style>
 </head>
@@ -125,9 +119,22 @@
 
   <script>
     function openTool(tool) {
-      window.location.href = tool + ".html";
+      alert('Abrindo: ' + tool);
+      // Aqui você pode colocar window.location.href para cada ferramenta real quando quiser.
     }
   </script>
+
+  <!-- Scripts da Monetag -->
+  <script async src="https://cdn.monetag.io/js/9177371.js"></script>
+  <script async src="https://cdn.monetag.io/js/9177372.js"></script>
+  <script async src="https://cdn.monetag.io/js/9177373.js"></script>
+  <script async src="https://cdn.monetag.io/js/9177374.js"></script>
+  <script async src="https://cdn.monetag.io/js/9177375.js"></script>
+  <script async src="https://cdn.monetag.io/js/9176783.js"></script>
+  <script async src="https://cdn.monetag.io/js/9176782.js"></script>
+  <script async src="https://cdn.monetag.io/js/9176781.js"></script>
+  <script async src="https://cdn.monetag.io/js/9176780.js"></script>
+  <script async src="https://cdn.monetag.io/js/9176779.js"></script>
 </body>
 
 </html>
