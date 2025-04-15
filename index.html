@@ -36,7 +36,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
@@ -79,97 +79,67 @@
   <h1>DiaZen</h1>
   <p class="description">Ferramentas úteis para tornar seu dia mais produtivo e organizado</p>
   <div class="grid">
-    <div class="card" onclick="window.location.href='cronometro.html'">
+    <div class="card" onclick="openTool('cronometro')">
       <h2>Cronômetro</h2>
       <p>Meça o tempo com precisão.</p>
     </div>
-    <div class="card" onclick="window.location.href='timer.html'">
+    <div class="card" onclick="openTool('timer')">
       <h2>Timer</h2>
       <p>Contagem regressiva personalizada.</p>
     </div>
-    <div class="card" onclick="window.location.href='relogio.html'">
+    <div class="card" onclick="openTool('relogio')">
       <h2>Relógio Local</h2>
       <p>Hora exata do seu local.</p>
     </div>
-    <div class="card" onclick="window.location.href='mundial.html'">
+    <div class="card" onclick="openTool('mundial')">
       <h2>Relógio Mundial</h2>
       <p>Veja a hora em qualquer parte do mundo.</p>
     </div>
-    <div class="card" onclick="window.location.href='fuso.html'">
+    <div class="card" onclick="openTool('fuso')">
       <h2>Conversor de Fuso</h2>
       <p>Converta horários entre países.</p>
     </div>
-    <div class="card" onclick="window.location.href='alarme.html'">
+    <div class="card" onclick="openTool('alarme')">
       <h2>Alarme</h2>
       <p>Defina alarmes pelo navegador.</p>
     </div>
-    <div class="card" onclick="window.location.href='calendario.html'">
+    <div class="card" onclick="openTool('calendario')">
       <h2>Calendário</h2>
       <p>Planeje seus dias com facilidade.</p>
     </div>
-    <div class="card" onclick="window.location.href='datas.html'">
+    <div class="card" onclick="openTool('datas')">
       <h2>Calculadora de Datas</h2>
       <p>Calcule períodos e prazos.</p>
     </div>
-    <div class="card" onclick="window.location.href='dicas.html'">
+    <div class="card" onclick="openTool('dicas')">
       <h2>Dicas de Produtividade</h2>
       <p>Melhore sua rotina com sugestões úteis.</p>
     </div>
   </div>
 
   <script>
-    // Adicionando os scripts da Monetag
-    (function() {
-      var script1 = document.createElement('script');
-      script1.src = 'https://cdn.monetag.io/js/9177371.js';
-      script1.async = true;
-      document.body.appendChild(script1);
-
-      var script2 = document.createElement('script');
-      script2.src = 'https://cdn.monetag.io/js/9177372.js';
-      script2.async = true;
-      document.body.appendChild(script2);
-
-      var script3 = document.createElement('script');
-      script3.src = 'https://cdn.monetag.io/js/9177373.js';
-      script3.async = true;
-      document.body.appendChild(script3);
-
-      var script4 = document.createElement('script');
-      script4.src = 'https://cdn.monetag.io/js/9177374.js';
-      script4.async = true;
-      document.body.appendChild(script4);
-
-      var script5 = document.createElement('script');
-      script5.src = 'https://cdn.monetag.io/js/9177375.js';
-      script5.async = true;
-      document.body.appendChild(script5);
-
-      var script6 = document.createElement('script');
-      script6.src = 'https://cdn.monetag.io/js/9176783.js';
-      script6.async = true;
-      document.body.appendChild(script6);
-
-      var script7 = document.createElement('script');
-      script7.src = 'https://cdn.monetag.io/js/9176782.js';
-      script7.async = true;
-      document.body.appendChild(script7);
-
-      var script8 = document.createElement('script');
-      script8.src = 'https://cdn.monetag.io/js/9176781.js';
-      script8.async = true;
-      document.body.appendChild(script8);
-
-      var script9 = document.createElement('script');
-      script9.src = 'https://cdn.monetag.io/js/9176780.js';
-      script9.async = true;
-      document.body.appendChild(script9);
-
-      var script10 = document.createElement('script');
-      script10.src = 'https://cdn.monetag.io/js/9176779.js';
-      script10.async = true;
-      document.body.appendChild(script10);
-    })();
+    function openTool(tool) {
+      // Redirecionamento para cada ferramenta, com base no nome da ferramenta
+      if (tool === 'cronometro') {
+        window.location.href = 'cronometro.html'; // Página do Cronômetro
+      } else if (tool === 'timer') {
+        window.location.href = 'timer.html'; // Página do Timer
+      } else if (tool === 'relogio') {
+        window.location.href = 'relogio.html'; // Página do Relógio Local
+      } else if (tool === 'mundial') {
+        window.location.href = 'relogio-mundial.html'; // Página do Relógio Mundial
+      } else if (tool === 'fuso') {
+        window.location.href = 'conversor-fuso.html'; // Página do Conversor de Fuso
+      } else if (tool === 'alarme') {
+        window.location.href = 'alarme.html'; // Página do Alarme
+      } else if (tool === 'calendario') {
+        window.location.href = 'calendario.html'; // Página do Calendário
+      } else if (tool === 'datas') {
+        window.location.href = 'calculadora-datas.html'; // Página da Calculadora de Datas
+      } else if (tool === 'dicas') {
+        window.location.href = 'dicas-produtividade.html'; // Página das Dicas de Produtividade
+      }
+    }
   </script>
 </body>
 
