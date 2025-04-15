@@ -36,7 +36,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
@@ -72,6 +72,10 @@
       font-size: 0.9rem;
       color: #f0f0f0;
     }
+
+    a {
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -79,68 +83,43 @@
   <h1>DiaZen</h1>
   <p class="description">Ferramentas úteis para tornar seu dia mais produtivo e organizado</p>
   <div class="grid">
-    <div class="card" onclick="openTool('cronometro')">
+    <a href="cronometro.html" class="card">
       <h2>Cronômetro</h2>
       <p>Meça o tempo com precisão.</p>
-    </div>
-    <div class="card" onclick="openTool('timer')">
+    </a>
+    <a href="timer.html" class="card">
       <h2>Timer</h2>
       <p>Contagem regressiva personalizada.</p>
-    </div>
-    <div class="card" onclick="openTool('relogio')">
+    </a>
+    <a href="relogio.html" class="card">
       <h2>Relógio Local</h2>
       <p>Hora exata do seu local.</p>
-    </div>
-    <div class="card" onclick="openTool('mundial')">
+    </a>
+    <a href="mundial.html" class="card">
       <h2>Relógio Mundial</h2>
       <p>Veja a hora em qualquer parte do mundo.</p>
-    </div>
-    <div class="card" onclick="openTool('fuso')">
+    </a>
+    <a href="fuso.html" class="card">
       <h2>Conversor de Fuso</h2>
       <p>Converta horários entre países.</p>
-    </div>
-    <div class="card" onclick="openTool('alarme')">
+    </a>
+    <a href="alarme.html" class="card">
       <h2>Alarme</h2>
       <p>Defina alarmes pelo navegador.</p>
-    </div>
-    <div class="card" onclick="openTool('calendario')">
+    </a>
+    <a href="calendario.html" class="card">
       <h2>Calendário</h2>
       <p>Planeje seus dias com facilidade.</p>
-    </div>
-    <div class="card" onclick="openTool('datas')">
+    </a>
+    <a href="datas.html" class="card">
       <h2>Calculadora de Datas</h2>
       <p>Calcule períodos e prazos.</p>
-    </div>
-    <div class="card" onclick="openTool('dicas')">
+    </a>
+    <a href="dicas.html" class="card">
       <h2>Dicas de Produtividade</h2>
       <p>Melhore sua rotina com sugestões úteis.</p>
-    </div>
+    </a>
   </div>
-
-  <script>
-    function openTool(tool) {
-      // Redirecionamento para cada ferramenta, com base no nome da ferramenta
-      if (tool === 'cronometro') {
-        window.location.href = 'cronometro.html'; // Página do Cronômetro
-      } else if (tool === 'timer') {
-        window.location.href = 'timer.html'; // Página do Timer
-      } else if (tool === 'relogio') {
-        window.location.href = 'relogio.html'; // Página do Relógio Local
-      } else if (tool === 'mundial') {
-        window.location.href = 'relogio-mundial.html'; // Página do Relógio Mundial
-      } else if (tool === 'fuso') {
-        window.location.href = 'conversor-fuso.html'; // Página do Conversor de Fuso
-      } else if (tool === 'alarme') {
-        window.location.href = 'alarme.html'; // Página do Alarme
-      } else if (tool === 'calendario') {
-        window.location.href = 'calendario.html'; // Página do Calendário
-      } else if (tool === 'datas') {
-        window.location.href = 'calculadora-datas.html'; // Página da Calculadora de Datas
-      } else if (tool === 'dicas') {
-        window.location.href = 'dicas-produtividade.html'; // Página das Dicas de Produtividade
-      }
-    }
-  </script>
 </body>
 
 </html>
