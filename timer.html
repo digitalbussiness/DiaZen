@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer - DiaZen</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #121212;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .timer-container {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+        }
+        .timer-container h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .timer-container p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #bbb;
+        }
+        .timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .controls button {
+            background-color: #26c6da;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .controls button:hover {
+            background-color: #00bcd4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timer - DiaZen</h1>
+    <div class="timer-container">
+        <h2>Contagem Regressiva</h2>
+        <p>Configure o timer para contagem regressiva.</p>
+        <div class="timer" id="timerDisplay">00:00</div>
+        <div class="controls">
+            <input type="number" id="minutesInput" placeholder="Minutos" style="width: 80px; text-align: center; padding: 5px; border-radius: 5px; font-size: 1rem;">
+            <input type="number" id="secondsInput" placeholder="Segundos" style="width: 80px; text-align: center; padding: 5px; border-radius: 5px; font-size: 1rem;">
+            <br>
+            <button onclick="startTimer()">Iniciar</button>
+            <button onclick="stopTimer()">Parar</button>
+        </div>
+    </div>
+    <script>
+        let timer;
+        let timeLeft;
+
+        function startTimer() {
+            let minutes = document.getElementById('minutesInput').value;
+            let seconds = document.getElementById('secondsInput').value;
+            timeLeft = (parseInt(minutes) * 60) + parseInt(seconds);
+
+            if (timer) clearInterval(timer);
+            
+            timer = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("Tempo esgotado!");
+                } else {
+                    timeLeft--;
+                    let minutesLeft = Math.floor(timeLeft / 60);
+                    let secondsLeft = timeLeft % 60;
+                    document.getElementById('timerDisplay').innerText = 
+                        `${minutesLeft.toString().padStart(2, '0')}:${secondsLeft.toString().padStart(2, '0')}`;
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            document.getElementById('timerDisplay').innerText = '00:00';
+        }
+    </script>
+</body>
+</html>
