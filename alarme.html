@@ -76,3 +76,111 @@
         }
 
         .alarme-box input[type="time"] {
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 150px;
+        }
+
+        .alarme-box button {
+            background-color: #4e73df;
+            color: white;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .alarme-box button:hover {
+            background-color: #3e5bbf;
+        }
+
+        .alarme-status {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+
+    <!-- Script da Monetag (se necessário) -->
+    <script async src="https://ads.monetag.io.js" data-id="9177371"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="DiaZen">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cronometro.html">Cronômetro</a></li>
+                <li><a href="timer.html">Timer</a></li>
+                <li><a href="relogio-mundial.html">Relógio Mundial</a></li>
+                <li><a href="alarme.html" class="active">Alarme</a></li>
+                <li><a href="tarefas-diarias.html">Tarefas Diárias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Espaço para anúncios (Monetag) -->
+    <section class="ads-banner">
+        <script async src="https://ads.monetag.io.js" data-id="9177374"></script>
+    </section>
+
+    <!-- Main content -->
+    <main class="alarme">
+        <section class="container">
+            <h1>Alarme - Defina seu Alarme com DiaZen</h1>
+            <p>Com a ferramenta de alarme do DiaZen, você pode configurar alarmes para todas as suas necessidades. Seja para acordar, lembrar de tarefas ou compromissos importantes, tenha a tranquilidade de nunca mais perder o horário.</p>
+            
+            <div class="alarme-box">
+                <label for="alarme-time">Escolha o horário:</label>
+                <input type="time" id="alarme-time">
+                <button onclick="setAlarme()">Definir Alarme</button>
+            </div>
+
+            <div class="alarme-status">
+                <p id="alarme-status-text">Nenhum alarme configurado.</p>
+            </div>
+
+            <!-- Scripts para funcionalidade -->
+            <script>
+                function setAlarme() {
+                    const alarmeTime = document.getElementById('alarme-time').value;
+                    const alarmeStatusText = document.getElementById('alarme-status-text');
+
+                    if (alarmeTime) {
+                        alarmeStatusText.textContent = `Alarme configurado para ${alarmeTime}.`;
+                    } else {
+                        alarmeStatusText.textContent = "Por favor, selecione um horário.";
+                    }
+                }
+            </script>
+        </section>
+    </main>
+
+    <!-- Espaço para outro tipo de anúncio (Monetag) -->
+    <section class="ads-banner">
+        <script async src="https://ads.monetag.io.js" data-id="9177373"></script>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DiaZen. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
