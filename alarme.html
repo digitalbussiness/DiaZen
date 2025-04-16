@@ -4,76 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alarme | DiaZen</title>
-    <link rel="icon" href="favicon.ico"> <!-- Adicionando favicon -->
-    <!-- Adicione aqui seu link para o CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Script da Monetag (se necessário) -->
-    <script async src="https://ads.monetag.io.js" data-id="9177371"></script>
-</head>
-<body>
+    <link rel="icon" href="favicon.ico"> <!-- Favicon -->
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="DiaZen">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="cronometro.html">Cronômetro</a></li>
-                <li><a href="timer.html">Timer</a></li>
-                <li><a href="relogio-mundial.html">Relógio Mundial</a></li>
-                <li><a href="alarme.html" class="active">Alarme</a></li>
-                <li><a href="tarefas-diarias.html">Tarefas Diárias</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-    <!-- Espaço para anúncios (Monetag) -->
-    <section class="ads-banner">
-        <script async src="https://ads.monetag.io.js" data-id="9177374"></script>
-    </section>
+        header {
+            background-color: #4e73df;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-    <!-- Main content -->
-    <main class="alarme">
-        <section class="container">
-            <h1>Alarme - Defina seu Alarme com DiaZen</h1>
-            <p>Com a ferramenta de alarme do DiaZen, você pode configurar alarmes para todas as suas necessidades. Seja para acordar, lembrar de tarefas ou compromissos importantes, tenha a tranquilidade de nunca mais perder o horário.</p>
-            
-            <div class="alarme-box">
-                <label for="alarme-time">Escolha o horário:</label>
-                <input type="time" id="alarme-time">
-                <button onclick="setAlarme()">Definir Alarme</button>
-            </div>
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
 
-            <div class="alarme-status">
-                <p id="alarme-status-text">Nenhum alarme configurado.</p>
-            </div>
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
 
-            <!-- Scripts para funcionalidade -->
-            <script>
-                function setAlarme() {
-                    const alarmeTime = document.getElementById('alarme-time').value;
-                    const alarmeStatusText = document.getElementById('alarme-status-text');
+        header nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
 
-                    if (alarmeTime) {
-                        alarmeStatusText.textContent = `Alarme configurado para ${alarmeTime}.`;
-                    } else {
-                        alarmeStatusText.textContent = "Por favor, selecione um horário.";
-                    }
-                }
-            </script>
-        </section>
-    </main>
+        header nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
 
-    <!-- Espaço para outro tipo de anúncio (Monetag) -->
-    <section class="ads-banner">
-        <script async src="https://ads.monetag.io.js" data-id="9177373"></script>
-    </section>
+        header nav ul li a.active {
+            border-bottom: 2px solid #fff;
+        }
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 DiaZen. Todos os direitos reservados.</p>
-    </footer>
-</body>
-</html>
+        .ads-banner {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4e73df;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .alarme-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .alarme-box input[type="time"] {
