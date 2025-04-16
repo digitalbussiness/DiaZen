@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relógio Local - DiaZen</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .clock {
+      font-size: 3rem;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      width: 250px;
+    }
+
+    .clock span {
+      display: block;
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title">Relógio Local</h1>
+    <p class="description">Veja a hora exata do seu local em tempo real.</p>
+    <div class="clock">
+      <div id="time"></div>
+      <span id="date"></span>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const timeElement = document.getElementById("time");
+      const dateElement = document.getElementById("date");
+
+      const currentTime = new Date();
+      const hours = String(currentTime.getHours()).padStart(2, "0");
+      const minutes = String(currentTime.getMinutes()).padStart(2, "0");
+      const seconds = String(currentTime.getSeconds()).padStart(2, "0");
+
+      timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      dateElement.textContent = currentTime.toLocaleDateString("pt-BR", options);
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Call once immediately to show time instantly
+  </script>
+</body>
+
+</html>
