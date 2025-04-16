@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiaZen - Tarefas Diárias</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f0f0f, #1f1f1f);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background-color: #2a2a2a;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .task-input {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #3ea86f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background-color: #3a3a3a;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .done {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+    .ads {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 728px;
+      height: 90px;
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tarefas Diárias</h1>
+  <div class="container">
+    <div class="task-input">
+      <input type="text" id="task" placeholder="Digite sua tarefa..." />
+      <button onclick="addTask()">Adicionar</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+  <div class="ads">
+    Espaço para Anúncio (Monetag)
+  </div>
+
+  <script>
+    const taskInput = document.getElementById('task');
+    const taskList = document.getElementById('taskList');
+
+    function loadTasks() {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      taskList.innerHTML = '';
+      tasks.forEach(({ text, done }, index) => {
+        const li = document.createElement('li');
+        li.className = done ? 'done' : '';
+        li.innerHTML = `
+          <span onclick="toggleDone(${index})">${text}</span>
+          <button onclick="removeTask(${index})">❌</button>
+        `;
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask() {
+      const taskText = taskInput.value.trim();
+      if (!taskText) return;
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.push({ text: taskText, done: false });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      taskInput.value = '';
+      loadTasks();
+    }
+
+    function removeTask(index) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    function toggleDone(index) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks[index].done = !tasks[index].done;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    window.onload = loadTasks;
+  </script>
+
+  <!-- Scripts da Monetag com Adblock Bypass -->
+  <script>
+    (function() {
+      var script = document.createElement('script');
+      script.src = '//www.monetag.com/a/display.js';
+      script.setAttribute('data-zone', '9177371');
+      script.setAttribute('data-adblock', '1');
+      document.body.appendChild(script);
+    })();
+  </script>
+</body>
+</html>
