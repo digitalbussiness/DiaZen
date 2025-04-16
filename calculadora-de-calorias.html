@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Calorias | DiaZen</title>
+    <link rel="icon" href="favicon.ico"> <!-- Favicon -->
+
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000; /* Fundo preto */
+            margin: 0;
+            padding: 0;
+            color: #fff; /* Texto branco para contraste */
+        }
+
+        header {
+            background-color: #4e73df;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        header nav ul li a.active {
+            border-bottom: 2px solid #fff;
+        }
+
+        .ads-banner {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4e73df;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calorias-box {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .calorias-box input[type="number"],
+        .calorias-box select {
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .calorias-box button {
+            background-color: #4e73df;
+            color: white;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calorias-box button:hover {
+            background-color: #3e5bbf;
+        }
+
+        .calorias-result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+
+    <!-- Script da Monetag (se necessário) -->
+    <script async src="https://ads.monetag.io.js" data-id="9177371"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="DiaZen">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cronometro.html">Cronômetro</a></li>
+                <li><a href="timer.html">Timer</a></li>
+                <li><a href="relogio-mundial.html">Relógio Mundial</a></li>
+                <li><a href="alarme.html">Alarme</a></li>
+                <li><a href="calculadora-calorias.html" class="active">Calculadora de Calorias</a></li>
+                <li><a href="tarefas-diarias.html">Tarefas Diárias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Espaço para anúncios da Monetag -->
+    <section class="ads-banner">
+        <script async src="https://ads.monetag.io.js" data-id="9177374"></script>
+    </section>
+
+    <!-- Main content -->
+    <main class="calculadora-calorias">
+        <section class="container">
+            <h1>Calculadora de Calorias</h1>
+            <p>Calcule a quantidade de calorias que você deve consumir para atingir seus objetivos de saúde, como perder peso, manter-se ou ganhar massa muscular.</p>
+            
+            <div class="calorias-box">
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" placeholder="Digite seu peso" required>
+                
+                <label for="altura">Altura (cm):</label>
+                <input type="number" id="altura" placeholder="Digite sua altura" required>
+                
+                <label for="idade">Idade (anos):</label>
+                <input type="number" id="idade" placeholder="Digite sua idade" required>
+                
+                <label for="sexo">Sexo:</label>
+                <select id="sexo">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                </select>
+
+                <label for="atividade">Nível de Atividade:</label>
+                <select id="atividade">
+                    <option value="sedentario">Sedentário</option>
+                    <option value="leve">Levemente ativo</option>
+                    <option value="moderado">Moderadamente ativo</option>
+                    <option value="intenso">Muito ativo</option>
+                </select>
+
+                <button onclick="calcularCalorias()">Calcular</button>
+            </div>
+
+            <div class="calorias-result">
+                <p id="resultado-calorias">Resultado: Aguardando os dados...</p>
+            </div>
+
+            <!-- Scripts para funcionalidade -->
+            <script>
+                function calcularCalorias() {
+                    const peso = parseFloat(document.getElementById('peso').value);
+                    const altura = parseFloat(document.getElementById('altura').value);
+                    const idade = parseInt(document.getElementById('idade').value);
+                    const sexo = document.getElementById('sexo').value;
+                    const atividade = document.getElementById('atividade').value;
+
+                    if (!peso || !altura || !idade) {
+                        document.getElementById('resultado-calorias').textContent = "Por favor, preencha todos os campos.";
+                        return;
+                    }
+
+                    let bmr = 0;
+
+                    if (sexo === 'masculino') {
+                        bmr = 10 * peso + 6.25 * altura - 5 * idade + 5;
+                    } else {
+                        bmr = 10 * peso + 6.25 * altura - 5 * idade - 161;
+                    }
+
+                    let fatorAtividade = 1.2; // Sedentário
+
+                    if (atividade === 'leve') {
+                        fatorAtividade = 1.375;
+                    } else if (atividade === 'moderado') {
+                        fatorAtividade = 1.55;
+                    } else if (atividade === 'intenso') {
+                        fatorAtividade = 1.725;
+                    }
+
+                    const calorias = bmr * fatorAtividade;
+
+                    document.getElementById('resultado-calorias').textContent = `Você deve consumir cerca de ${calorias.toFixed(2)} calorias por dia para manter seu peso.`;
+                }
+            </script>
+        </section>
+    </main>
+
+    <!-- Espaço para outro tipo de anúncio da Monetag -->
+    <section class="ads-banner">
+        <script async src="https://ads.monetag.io.js" data-id="9177373"></script>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DiaZen. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
