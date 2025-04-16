@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Fuso</title>
+    <link rel="icon" href="fuso.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 800px;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #555;
+            border-radius: 5px;
+            margin: 5px;
+            background-color: #444;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #00aaff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0088cc;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ff9900;
+        }
+        .advertisements {
+            margin-top: 30px;
+            text-align: center;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Conversor de Fuso</h1>
+        <div class="input-group">
+            <label for="timezone1">Selecione o fuso horário de origem:</label>
+            <select id="timezone1">
+                <option value="UTC">UTC</option>
+                <option value="GMT">GMT</option>
+                <option value="EST">EST</option>
+                <!-- Add more timezones here -->
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="timezone2">Selecione o fuso horário de destino:</label>
+            <select id="timezone2">
+                <option value="UTC">UTC</option>
+                <option value="GMT">GMT</option>
+                <option value="EST">EST</option>
+                <!-- Add more timezones here -->
+            </select>
+        </div>
+        <button id="convert">Converter</button>
+        <div class="result" id="result"></div>
+        <div class="advertisements">
+            <p>Espaço para anúncios Monetag</p>
+            <!-- Insert Monetag ads script here -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("convert").onclick = function() {
+            var timezone1 = document.getElementById("timezone1").value;
+            var timezone2 = document.getElementById("timezone2").value;
+            var result = document.getElementById("result");
+
+            // Placeholder for timezone conversion logic
+            result.textContent = "Resultado da conversão de " + timezone1 + " para " + timezone2;
+        };
+    </script>
+</body>
+</html>
