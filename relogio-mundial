@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relógio Mundial</title>
+  <link rel="icon" href="favicon-relogio.png" type="image/png">
+  <script async src="https://popunder.monetag.io/9177371"></script> <!-- Popunder -->
+  <script async src="https://push.monetag.io/9177372"></script> <!-- Push na página -->
+  <script async src="https://native.monetag.io/9177373"></script> <!-- Banner nativo -->
+  <script async src="https://banner.monetag.io/9177374"></script> <!-- Banner de vinheta -->
+  <script async src="https://push-notification.monetag.io/9177375"></script> <!-- Notificações Push -->
+  <style>
+    /* Estilo personalizado para o Relógio Mundial */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      padding: 20px;
+    }
+    .title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .clock {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 50px;
+    }
+    /* Adicionando espaço para o banner */
+    .ads-banner {
+      text-align: center;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Popunder, Banner de Vinheta ou Notificações Push (se necessário) -->
+
+  <div class="title">
+    <h1>Relógio Mundial</h1>
+    <p>Veja a hora exata em qualquer lugar do mundo.</p>
+  </div>
+
+  <!-- Adicionando Banner Nativo logo após o título -->
+  <div class="ads-banner">
+    <script async src="https://native.monetag.io/9177373"></script>
+  </div>
+
+  <!-- Exemplo de conteúdo da ferramenta -->
+  <div class="clock">
+    <p>Hora de Nova York: <span id="ny-time">Carregando...</span></p>
+    <p>Hora de Londres: <span id="london-time">Carregando...</span></p>
+    <p>Hora de Tóquio: <span id="tokyo-time">Carregando...</span></p>
+  </div>
+
+  <!-- Adicionando banner no final da página -->
+  <div class="ads-banner">
+    <script async src="https://banner.monetag.io/9177374"></script>
+  </div>
+
+  <script>
+    // Simulação de exibição de hora para as diferentes cidades
+    function updateTime(city, elementId) {
+      const cityTimes = {
+        "New York": new Date().toLocaleString("en-US", { timeZone: "America/New_York" }),
+        "London": new Date().toLocaleString("en-GB", { timeZone: "Europe/London" }),
+        "Tokyo": new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }),
+      };
+      document.getElementById(elementId).textContent = cityTimes[city];
+    }
+
+    updateTime("New York", "ny-time");
+    updateTime("London", "london-time");
+    updateTime("Tokyo", "tokyo-time");
+  </script>
+
+  <!-- Notificações Push (opcional) -->
+  <div class="ads-banner">
+    <script async src="https://push-notification.monetag.io/9177375"></script>
+  </div>
+
+</body>
+
+</html>
