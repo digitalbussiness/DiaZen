@@ -3,153 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Fuso</title>
-    <link rel="icon" href="fuso.ico">
+    <title>DiaZen - Ferramentas de Produtividade</title>
+    <link rel="icon" href="favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #00aaff, #ff6ec7);
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
-
         header {
-            background-color: #004a7c;
+            background: #2c3e50;
             color: white;
-            padding: 15px;
+            padding: 10px 0;
             text-align: center;
         }
-
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
         }
-
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
         .card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin: 20px auto;
+            background-color: white;
+            width: 30%;
+            margin: 10px;
             padding: 20px;
-            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            border-radius: 8px;
         }
-
         .card h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin: 20px 0;
         }
-
         .card p {
-            font-size: 1.1rem;
-            color: #555;
+            color: #777;
         }
-
-        .converter-box {
-            margin-top: 20px;
-        }
-
-        .converter-box input,
-        .converter-box select {
-            padding: 10px;
-            font-size: 1rem;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .converter-box button {
-            background-color: #004a7c;
+        .card a {
+            display: block;
+            background-color: #3498db;
             color: white;
-            padding: 10px 20px;
-            border: none;
+            padding: 10px;
+            text-decoration: none;
             border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin-top: 15px;
+            margin-top: 10px;
         }
-
-        .converter-box button:hover {
-            background-color: #003a5c;
-        }
-
         footer {
-            background-color: #004a7c;
+            background: #2c3e50;
             color: white;
             text-align: center;
-            padding: 10px;
-            position: fixed;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
             bottom: 0;
-            width: 100%;
-        }
-
-        .ads {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .ads iframe {
-            width: 100%;
-            height: 50px;
-            border: none;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Conversor de Fuso</h1>
+    <h1>DiaZen - Ferramentas de Produtividade</h1>
 </header>
 
-<div class="card">
-    <h2>Converta horários entre países</h2>
-    <p>Escolha os fusos horários e veja a conversão de horário instantânea.</p>
-
-    <div class="converter-box">
-        <label for="from-timezone">De:</label>
-        <select id="from-timezone">
-            <option value="GMT">GMT</option>
-            <option value="UTC">UTC</option>
-            <option value="EST">EST</option>
-            <option value="CET">CET</option>
-            <!-- Adicione mais fusos aqui -->
-        </select>
-
-        <label for="to-timezone">Para:</label>
-        <select id="to-timezone">
-            <option value="GMT">GMT</option>
-            <option value="UTC">UTC</option>
-            <option value="EST">EST</option>
-            <option value="CET">CET</option>
-            <!-- Adicione mais fusos aqui -->
-        </select>
-
-        <button id="convert-btn">Converter</button>
-
-        <p id="result"></p>
+<div class="container">
+    <div class="card">
+        <h2>Relógio Mundial</h2>
+        <p>Veja a hora em qualquer parte do mundo.</p>
+        <a href="mundial.html" class="card">Acessar</a>
+    </div>
+    <div class="card">
+        <h2>Cronômetro</h2>
+        <p>Faça contagens de tempo rápidas.</p>
+        <a href="cronometro.html" class="card">Acessar</a>
+    </div>
+    <div class="card">
+        <h2>Timer</h2>
+        <p>Defina tempo para tarefas específicas.</p>
+        <a href="timer.html" class="card">Acessar</a>
+    </div>
+    <div class="card">
+        <h2>Conversor de Fuso</h2>
+        <p>Converta horários entre países.</p>
+        <a href="fuso.html" class="card">Acessar</a>
+    </div>
+    <div class="card">
+        <h2>Conversor de Moeda</h2>
+        <p>Converta moedas com as taxas atuais.</p>
+        <a href="moeda.html" class="card">Acessar</a>
+    </div>
+    <div class="card">
+        <h2>Calculadora de Descontos</h2>
+        <p>Calcule descontos de maneira rápida.</p>
+        <a href="desconto.html" class="card">Acessar</a>
     </div>
 </div>
 
-<div class="ads">
-    <!-- Adicionar o script do Monetag aqui -->
-    <iframe src="https://www.monetag.com/ad-script"></iframe>
-</div>
-
 <footer>
-    <p>© 2025 DiaZen. Todos os direitos reservados.</p>
+    <p>&copy; 2025 DiaZen - Todos os direitos reservados</p>
 </footer>
-
-<script>
-    document.getElementById('convert-btn').addEventListener('click', function () {
-        const fromTimezone = document.getElementById('from-timezone').value;
-        const toTimezone = document.getElementById('to-timezone').value;
-
-        // Lógica para converter os fusos horários
-        const result = `Convertendo de ${fromTimezone} para ${toTimezone}`;
-
-        document.getElementById('result').innerText = result;
-    });
-</script>
 
 </body>
 </html>
