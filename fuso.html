@@ -1,113 +1,153 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Fuso</title>
-    <link rel="icon" href="fuso.ico" type="image/x-icon">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 90%;
-            max-width: 800px;
-            background-color: #333;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        input, select {
-            padding: 10px;
-            font-size: 1rem;
-            border: 2px solid #555;
-            border-radius: 5px;
-            margin: 5px;
-            background-color: #444;
-            color: white;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #00aaff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0088cc;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #ff9900;
-        }
-        .advertisements {
-            margin-top: 30px;
-            text-align: center;
-            color: #aaa;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversor de Fuso | DiaZen</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1e1e2f, #2c3e50);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #111827;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .converter {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    label, select {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    select, input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #4f46e5;
+      color: white;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #111827;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Conversor de Fuso</h1>
-        <div class="input-group">
-            <label for="timezone1">Selecione o fuso horário de origem:</label>
-            <select id="timezone1">
-                <option value="UTC">UTC</option>
-                <option value="GMT">GMT</option>
-                <option value="EST">EST</option>
-                <!-- Add more timezones here -->
-            </select>
-        </div>
-        <div class="input-group">
-            <label for="timezone2">Selecione o fuso horário de destino:</label>
-            <select id="timezone2">
-                <option value="UTC">UTC</option>
-                <option value="GMT">GMT</option>
-                <option value="EST">EST</option>
-                <!-- Add more timezones here -->
-            </select>
-        </div>
-        <button id="convert">Converter</button>
-        <div class="result" id="result"></div>
-        <div class="advertisements">
-            <p>Espaço para anúncios Monetag</p>
-            <!-- Insert Monetag ads script here -->
-        </div>
+
+  <header>
+    <h1>Conversor de Fuso Horário</h1>
+  </header>
+
+  <main>
+    <div class="converter">
+      <label for="from">De:</label>
+      <select id="from">
+        <option value="America/Sao_Paulo">São Paulo (GMT-3)</option>
+        <option value="Europe/Lisbon">Lisboa (GMT+1)</option>
+        <option value="Asia/Tokyo">Tóquio (GMT+9)</option>
+        <option value="America/New_York">Nova York (GMT-4)</option>
+      </select>
+
+      <label for="to">Para:</label>
+      <select id="to">
+        <option value="America/Sao_Paulo">São Paulo (GMT-3)</option>
+        <option value="Europe/Lisbon">Lisboa (GMT+1)</option>
+        <option value="Asia/Tokyo">Tóquio (GMT+9)</option>
+        <option value="America/New_York">Nova York (GMT-4)</option>
+      </select>
+
+      <label for="date">Data e hora:</label>
+      <input type="datetime-local" id="date" />
+
+      <button onclick="converter()">Converter</button>
+
+      <div class="result" id="resultado">Resultado aparecerá aqui.</div>
     </div>
+  </main>
 
-    <script>
-        document.getElementById("convert").onclick = function() {
-            var timezone1 = document.getElementById("timezone1").value;
-            var timezone2 = document.getElementById("timezone2").value;
-            var result = document.getElementById("result");
+  <!-- Espaço para anúncios Monetag -->
+  <!-- Cole aqui seus scripts da Monetag -->
+  <div style="margin: 2rem 0; text-align:center;">
+    <!-- MONETAG SCRIPT AQUI -->
+  </div>
 
-            // Placeholder for timezone conversion logic
-            result.textContent = "Resultado da conversão de " + timezone1 + " para " + timezone2;
-        };
-    </script>
+  <footer>
+    &copy; 2025 DiaZen - Todos os direitos reservados
+  </footer>
+
+  <script>
+    function converter() {
+      const from = document.getElementById("from").value;
+      const to = document.getElementById("to").value;
+      const inputDate = document.getElementById("date").value;
+
+      if (!inputDate) {
+        document.getElementById("resultado").textContent = "Escolha uma data e hora.";
+        return;
+      }
+
+      const date = new Date(inputDate);
+      const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+      const fromOffset = new Date().toLocaleString("en-US", { timeZone: from });
+      const toOffset = new Date(utc).toLocaleString("en-US", { timeZone: to });
+      
+      document.getElementById("resultado").textContent = 
+        `Hora em ${to.replace("_", " ")}: ${new Date(toOffset).toLocaleString()}`;
+    }
+  </script>
+
 </body>
 </html>
