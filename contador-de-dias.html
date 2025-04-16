@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contador de Dias - DiaZen</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+        }
+        .header {
+            background-color: #222;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            background-color: #333;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .card input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        .card button {
+            padding: 10px 20px;
+            background-color: #FF5733;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #C44E2D;
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Contador de Dias</h1>
+        <p>Contagem de dias para um evento específico</p>
+    </div>
+    <div class="container">
+        <div class="card">
+            <input type="date" id="eventDate" />
+            <button onclick="calculateDays()">Contar Dias</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateDays() {
+            const eventDate = new Date(document.getElementById('eventDate').value);
+            const today = new Date();
+            const difference = eventDate - today;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+            if (isNaN(days)) {
+                document.getElementById('result').innerText = "Por favor, insira uma data válida.";
+            } else if (days > 0) {
+                document.getElementById('result').innerText = `Faltam ${days} dias para o evento!`;
+            } else if (days < 0) {
+                document.getElementById('result').innerText = "O evento já passou.";
+            } else {
+                document.getElementById('result').innerText = "O evento é hoje!";
+            }
+        }
+    </script>
+</body>
+</html>
