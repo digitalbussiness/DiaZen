@@ -3,116 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DiaZen - Ferramentas do Dia a Dia</title>
+  <title>DiaZen - Ferramentas para o dia a dia</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #fff;
     }
-
     header {
-      padding: 40px 20px 20px;
       text-align: center;
+      padding: 40px 20px 20px;
     }
-
     header h1 {
-      font-size: 3rem;
-      background: linear-gradient(to right, #ff66c4, #66ccff);
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #ff00cc, #3333ff);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: transparent;
     }
-
-    .tools {
+    main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      width: 100%;
-      max-width: 1000px;
-      padding: 40px 20px;
-    }
-
-    .card {
-      background-color: #1a1a1a;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 20px;
       text-align: center;
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
       color: white;
+      transition: transform 0.3s;
     }
-
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
     }
+    .card:nth-child(1) { background-color: #ff4c4c; }
+    .card:nth-child(2) { background-color: #4c6fff; }
+    .card:nth-child(3) { background-color: #00c292; }
+    .card:nth-child(4) { background-color: #f39c12; }
+    .card:nth-child(5) { background-color: #9b59b6; }
+    .card:nth-child(6) { background-color: #1abc9c; }
+    .card:nth-child(7) { background-color: #e67e22; }
+    .card:nth-child(8) { background-color: #3498db; }
+    .card:nth-child(9) { background-color: #e84393; }
+    .card:nth-child(10) { background-color: #27ae60; }
 
-    .card:nth-child(1) { background: #ff6666; }
-    .card:nth-child(2) { background: #66b3ff; }
-    .card:nth-child(3) { background: #99ff99; }
-    .card:nth-child(4) { background: #ffcc66; }
-    .card:nth-child(5) { background: #c266ff; }
-    .card:nth-child(6) { background: #66ffc2; }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 1.5rem;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    footer {
+    .ads {
+      margin: 40px auto;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #aaa;
+    }
+
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>DiaZen</h1>
-    <p>Ferramentas essenciais para seu dia a dia</p>
+    <p>Suas ferramentas diárias em um só lugar</p>
   </header>
 
-  <section class="tools">
+  <main>
     <a href="cronometro.html" class="card">
       <h2>Cronômetro</h2>
-      <p>Conte o tempo com precisão.</p>
+      <p>Meça o tempo com precisão.</p>
     </a>
     <a href="timer.html" class="card">
       <h2>Timer</h2>
-      <p>Configure contagens regressivas com alarme.</p>
+      <p>Configure contagens regressivas com facilidade.</p>
     </a>
     <a href="mundial.html" class="card">
       <h2>Relógio Mundial</h2>
       <p>Veja a hora em qualquer parte do mundo.</p>
     </a>
-    <a href="conversor.html" class="card">
+    <a href="fuso.html" class="card">
       <h2>Conversor de Fuso</h2>
       <p>Converta horários entre países.</p>
     </a>
-    <a href="calculadora.html" class="card">
-      <h2>Calculadora</h2>
-      <p>Realize cálculos rápidos e fáceis.</p>
-    </a>
     <a href="data.html" class="card">
       <h2>Conversor de Data</h2>
-      <p>Converta formatos de datas com facilidade.</p>
+      <p>Transforme datas de forma inteligente.</p>
     </a>
-  </section>
+    <a href="contador.html" class="card">
+      <h2>Contador de Dias</h2>
+      <p>Conte dias entre datas importantes.</p>
+    </a>
+    <a href="calendario.html" class="card">
+      <h2>Calendário</h2>
+      <p>Consulte o calendário atualizado.</p>
+    </a>
+    <a href="tarefas.html" class="card">
+      <h2>Tarefas Diárias</h2>
+      <p>Organize suas atividades com facilidade.</p>
+    </a>
+    <a href="alarme.html" class="card">
+      <h2>Alarme</h2>
+      <p>Configure alarmes direto no navegador.</p>
+    </a>
+    <a href="calorias.html" class="card">
+      <h2>Calculadora de Calorias</h2>
+      <p>Ideal para dietas e treinos.</p>
+    </a>
+  </main>
 
-  <footer>
-    © 2025 DiaZen - Todos os direitos reservados.
-  </footer>
+  <div class="ads">
+    <!-- Espaço para anúncios Monetag com Adblock Bypass -->
+    <script type="text/javascript">
+      var adblockBypassScript = document.createElement("script");
+      adblockBypassScript.src = "//monetag.com/script_tag/9177371.js";
+      document.body.appendChild(adblockBypassScript);
+    </script>
+  </div>
 </body>
 </html>
