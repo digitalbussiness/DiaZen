@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conversor de Data - DiaZen</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff00cc, #3333ff);
+      width: 100%;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .box {
+      background: #1e1e1e;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      background: #2b2b2b;
+      color: white;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: #ff00cc;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #e600b8;
+    }
+
+    .result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 480px) {
+      .box {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Conversor de Data</h1>
+  </header>
+
+  <div class="container">
+    <div class="box">
+      <label for="data">Escolha uma data:</label>
+      <input type="date" id="data" />
+
+      <label for="formato">Converter para:</label>
+      <select id="formato">
+        <option value="pt">dd/mm/aaaa</option>
+        <option value="us">mm/dd/yyyy</option>
+        <option value="iso">aaaa-mm-dd</option>
+      </select>
+
+      <button onclick="converterData()">Converter</button>
+
+      <div class="result" id="resultado"></div>
+    </div>
+  </div>
+
+  <!-- Espaço para anúncios Monetag -->
+  <div id="monetag-anuncio" style="margin: 2rem 0;">
+    <!-- Script da Monetag aqui -->
+    <script>
+      // Exemplo de placeholder
+      console.log("Anúncio Monetag aqui");
+    </script>
+  </div>
+
+  <footer>
+    &copy; 2025 DiaZen - Ferramentas para o seu dia a dia.
+  </footer>
+
+  <script>
+    function converterData() {
+      const data = document.getElementById('data').value;
+      const formato = document.getElementById('formato').value;
+      if (!data) return;
+
+      const [ano, mes, dia] = data.split('-');
+      let resultado = '';
+
+      switch (formato) {
+        case 'pt':
+          resultado = `${dia}/${mes}/${ano}`;
+          break;
+        case 'us':
+          resultado = `${mes}/${dia}/${ano}`;
+          break;
+        case 'iso':
+          resultado = `${ano}-${mes}-${dia}`;
+          break;
+      }
+
+      document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+    }
+  </script>
+</body>
+</html>
