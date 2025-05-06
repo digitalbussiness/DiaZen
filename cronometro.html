@@ -21,19 +21,27 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       padding: 20px;
       text-align: center;
+      padding-bottom: 80px; /* espaço para banner */
     }
 
     h1 {
       margin-bottom: 30px;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
 
     .timer {
-      font-size: 4rem;
+      font-size: 3rem;
       margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
 
     .buttons button {
@@ -41,15 +49,39 @@
       border: none;
       color: #000;
       padding: 10px 20px;
-      margin: 5px;
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
+      min-width: 100px;
     }
 
     .buttons button:hover {
       background-color: #92fe9d;
+    }
+
+    .banner-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 9999;
+      background-color: #000428;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .timer {
+        font-size: 2.5rem;
+      }
+
+      .buttons button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
@@ -61,6 +93,11 @@
     <button onclick="start()">Iniciar</button>
     <button onclick="pause()">Pausar</button>
     <button onclick="reset()">Resetar</button>
+  </div>
+
+  <!-- Banner fixo no rodapé -->
+  <div class="banner-footer">
+    <script async type="text/javascript" src="https://cdn.industriousads.com/js/9239743.js"></script>
   </div>
 
   <script>
@@ -100,11 +137,7 @@
     }
   </script>
 
-  <!-- Scripts para Monetag -->
-  <script async type="text/javascript" src="https://cdn.industriousads.com/js/9239743.js"></script>
-  <script async type="text/javascript" src="https://cdn.industriousads.com/js/9239742.js"></script>
-  <script async type="text/javascript" src="https://cdn.industriousads.com/js/9239741.js"></script>
-  <script async type="text/javascript" src="https://cdn.industriousads.com/js/9239740.js"></script>
+  <!-- Anúncio de clique (Monetag) -->
   <script async type="text/javascript" src="https://cdn.industriousads.com/js/9239739.js"></script>
 
 </body>
