@@ -95,54 +95,36 @@
   </div>
 
   <main>
-    <a href="cronometro.html" class="card">
-      <h2>Cronômetro</h2>
-      <p>Meça o tempo com precisão.</p>
-    </a>
-    <a href="timer.html" class="card">
-      <h2>Timer</h2>
-      <p>Configure contagens regressivas com facilidade.</p>
-    </a>
-    <a href="mundial.html" class="card">
-      <h2>Relógio Mundial</h2>
-      <p>Veja a hora em qualquer parte do mundo.</p>
-    </a>
-    <a href="fuso.html" class="card">
-      <h2>Conversor de Fuso</h2>
-      <p>Converta horários entre países.</p>
-    </a>
-    <a href="data.html" class="card">
-      <h2>Conversor de Data</h2>
-      <p>Transforme datas de forma inteligente.</p>
-    </a>
-    <a href="contador.html" class="card">
-      <h2>Contador de Dias</h2>
-      <p>Conte dias entre datas importantes.</p>
-    </a>
-    <a href="calendario.html" class="card">
-      <h2>Calendário</h2>
-      <p>Consulte o calendário atualizado.</p>
-    </a>
-    <a href="tarefas.html" class="card">
-      <h2>Tarefas Diárias</h2>
-      <p>Organize suas atividades com facilidade.</p>
-    </a>
-    <a href="alarme.html" class="card">
-      <h2>Alarme</h2>
-      <p>Configure alarmes direto no navegador.</p>
-    </a>
-    <a href="calorias.html" class="card">
-      <h2>Calculadora de Calorias</h2>
-      <p>Ideal para dietas e treinos.</p>
-    </a>
+    <a href="cronometro.html" class="card"><h2>Cronômetro</h2><p>Meça o tempo com precisão.</p></a>
+    <a href="timer.html" class="card"><h2>Timer</h2><p>Configure contagens regressivas com facilidade.</p></a>
+    <a href="mundial.html" class="card"><h2>Relógio Mundial</h2><p>Veja a hora em qualquer parte do mundo.</p></a>
+    <a href="fuso.html" class="card"><h2>Conversor de Fuso</h2><p>Converta horários entre países.</p></a>
+    <a href="data.html" class="card"><h2>Conversor de Data</h2><p>Transforme datas de forma inteligente.</p></a>
+    <a href="contador.html" class="card"><h2>Contador de Dias</h2><p>Conte dias entre datas importantes.</p></a>
+    <a href="calendario.html" class="card"><h2>Calendário</h2><p>Consulte o calendário atualizado.</p></a>
+    <a href="tarefas.html" class="card"><h2>Tarefas Diárias</h2><p>Organize suas atividades com facilidade.</p></a>
+    <a href="alarme.html" class="card"><h2>Alarme</h2><p>Configure alarmes direto no navegador.</p></a>
+    <a href="calorias.html" class="card"><h2>Calculadora de Calorias</h2><p>Ideal para dietas e treinos.</p></a>
   </main>
 
-  <!-- Scripts de ativação de fundo (Popunder, Push, etc.) -->
+  <!-- Scripts Monetag -->
   <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239743" async data-cfasync="false"></script>
   <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239740" async data-cfasync="false"></script>
   <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239739" async data-cfasync="false"></script>
+  <!-- Novo adicional -->
+  <script src="https://fpyf8.com/88/tag.min.js" data-zone="143436" async data-cfasync="false"></script>
 
-  <!-- Link de referência Monetag no rodapé -->
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('Service Worker registrado:', reg.scope))
+          .catch(err => console.error('Erro ao registrar o Service Worker:', err));
+      });
+    }
+  </script>
+
   <footer>
     <p>Publicidade por <a href="https://monetag.com/?ref_id=zg2e" target="_blank">Monetag</a></p>
   </footer>
