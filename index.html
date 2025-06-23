@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DiaZen - Ferramentas para o dia a dia</title>
   <link rel="icon" type="image/png" href="favicon.png" />
-  <meta name="monetag" content="d974c761877ad72634a67ef259635ac8">
+  <meta name="monetag" content="d974c761877ad72634a67ef259635ac8" />
 
   <style>
     body {
@@ -44,22 +44,10 @@
     .card:hover {
       transform: scale(1.05);
     }
-    .card:nth-child(1) { background-color: #ff4c4c; }
-    .card:nth-child(2) { background-color: #4c6fff; }
-    .card:nth-child(3) { background-color: #00c292; }
-    .card:nth-child(4) { background-color: #f39c12; }
-    .card:nth-child(5) { background-color: #9b59b6; }
-    .card:nth-child(6) { background-color: #1abc9c; }
-    .card:nth-child(7) { background-color: #e67e22; }
-    .card:nth-child(8) { background-color: #3498db; }
-    .card:nth-child(9) { background-color: #e84393; }
-    .card:nth-child(10) { background-color: #27ae60; }
-
     .ads-container {
       text-align: center;
       margin: 30px 0;
     }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -70,7 +58,6 @@
       color: #aaa;
       text-decoration: underline;
     }
-
     @media screen and (max-width: 600px) {
       header h1 {
         font-size: 2rem;
@@ -79,21 +66,20 @@
   </style>
 </head>
 <body>
+
   <header>
     <h1>DiaZen</h1>
     <p>Suas ferramentas diárias em um só lugar</p>
   </header>
 
-  <!-- Vignette Banner -->
+  <!-- Exemplo de ativação por clique -->
   <div class="ads-container">
-    <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239742" async data-cfasync="false"></script>
+    <button onclick="ativarAnuncio()" style="padding: 12px 24px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+      Acessar ferramenta com anúncio
+    </button>
   </div>
 
-  <!-- Native Interstitial -->
-  <div class="ads-container">
-    <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239741" async data-cfasync="false"></script>
-  </div>
-
+  <!-- Grade de ferramentas -->
   <main>
     <a href="cronometro.html" class="card"><h2>Cronômetro</h2><p>Meça o tempo com precisão.</p></a>
     <a href="timer.html" class="card"><h2>Timer</h2><p>Configure contagens regressivas com facilidade.</p></a>
@@ -107,26 +93,24 @@
     <a href="calorias.html" class="card"><h2>Calculadora de Calorias</h2><p>Ideal para dietas e treinos.</p></a>
   </main>
 
-  <!-- Scripts Monetag -->
-  <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239743" async data-cfasync="false"></script>
-  <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239740" async data-cfasync="false"></script>
-  <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="9239739" async data-cfasync="false"></script>
-  <!-- Novo adicional -->
-  <script src="https://fpyf8.com/88/tag.min.js" data-zone="143436" async data-cfasync="false"></script>
-
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('Service Worker registrado:', reg.scope))
-          .catch(err => console.error('Erro ao registrar o Service Worker:', err));
-      });
-    }
-  </script>
-
+  <!-- Footer -->
   <footer>
     <p>Publicidade por <a href="https://monetag.com/?ref_id=zg2e" target="_blank">Monetag</a></p>
   </footer>
+
+  <!-- Ativação Monetag controlada -->
+  <script>
+    function ativarAnuncio() {
+      // Interstitial ou Pop Script
+      const script = document.createElement('script');
+      script.src = "https://kulroakonsu.net/88/tag.min.js";
+      script.setAttribute('data-zone', '9239741'); // Altere conforme seu ID de zona válido
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      script.onload = () => console.log("Script Monetag ativado");
+      document.body.appendChild(script);
+    }
+  </script>
+
 </body>
 </html>
