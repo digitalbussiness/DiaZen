@@ -13,23 +13,17 @@
   <!-- ✅ Monetag: Interstitial -->
   <script src="https://fpyf8.com/88/tag.min.js" data-zone="9239741" async data-cfasync="false"></script>
 
-  <!-- ✅ Ativar anúncio e redirecionar -->
+  <!-- ✅ Monetag: Popunder automático -->
   <script>
-    function abrirComAnuncio(event, url) {
-      event.preventDefault();
-
+    window.addEventListener("load", () => {
       const script = document.createElement('script');
       script.src = "https://fpyf8.com/88/tag.min.js";
       script.setAttribute("data-zone", "9239739");
       script.async = true;
       script.setAttribute("data-cfasync", "false");
       document.body.appendChild(script);
-      console.log("✅ Anúncio OnClick carregado");
-
-      setTimeout(() => {
-        window.location.href = url;
-      }, 400);
-    }
+      console.log("✅ Anúncio automático carregado");
+    });
   </script>
 
   <style>
@@ -69,10 +63,6 @@
     .card:hover {
       transform: scale(1.05);
     }
-    .ads-container {
-      text-align: center;
-      margin: 30px 0;
-    }
     footer {
       text-align: center;
       padding: 20px;
@@ -97,25 +87,37 @@
     <p>Suas ferramentas diárias em um só lugar</p>
   </header>
 
-  <!-- ✅ Botão opcional -->
-  <div class="ads-container">
-    <button onclick="ativarAnuncio()" style="padding: 12px 24px; background-color: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
-      Acessar ferramenta com anúncio
-    </button>
-  </div>
-
-  <!-- ✅ Ferramentas com Anúncio + Redirecionamento -->
   <main>
-    <a href="cronometro.html" class="card" onclick="abrirComAnuncio(event, 'cronometro.html')" style="background-color: #007BFF;"><h2>Cronômetro</h2><p>Meça o tempo com precisão.</p></a>
-    <a href="timer.html" class="card" onclick="abrirComAnuncio(event, 'timer.html')" style="background-color: #FFD700;"><h2>Timer</h2><p>Configure contagens regressivas com facilidade.</p></a>
-    <a href="mundial.html" class="card" onclick="abrirComAnuncio(event, 'mundial.html')" style="background-color: #FF5733;"><h2>Relógio Mundial</h2><p>Veja a hora em qualquer parte do mundo.</p></a>
-    <a href="fuso.html" class="card" onclick="abrirComAnuncio(event, 'fuso.html')" style="background-color: #8A2BE2;"><h2>Conversor de Fuso</h2><p>Converta horários entre países.</p></a>
-    <a href="data.html" class="card" onclick="abrirComAnuncio(event, 'data.html')" style="background-color: #A0522D;"><h2>Conversor de Data</h2><p>Transforme datas de forma inteligente.</p></a>
-    <a href="contador.html" class="card" onclick="abrirComAnuncio(event, 'contador.html')" style="background-color: #FF1493;"><h2>Contador de Dias</h2><p>Conte dias entre datas importantes.</p></a>
-    <a href="calendario.html" class="card" onclick="abrirComAnuncio(event, 'calendario.html')" style="background-color: #20B2AA;"><h2>Calendário</h2><p>Consulte o calendário atualizado.</p></a>
-    <a href="tarefas.html" class="card" onclick="abrirComAnuncio(event, 'tarefas.html')" style="background-color: #FF8C00;"><h2>Tarefas Diárias</h2><p>Organize suas atividades com facilidade.</p></a>
-    <a href="alarme.html" class="card" onclick="abrirComAnuncio(event, 'alarme.html')" style="background-color: #DC143C;"><h2>Alarme</h2><p>Configure alarmes direto no navegador.</p></a>
-    <a href="calorias.html" class="card" onclick="abrirComAnuncio(event, 'calorias.html')" style="background-color: #6B8E23;"><h2>Calculadora de Calorias</h2><p>Ideal para dietas e treinos.</p></a>
+    <a href="#" class="card" onclick="abrirComAnuncio('cronometro.html')" style="background-color: #007BFF;">
+      <h2>Cronômetro</h2><p>Meça o tempo com precisão.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('timer.html')" style="background-color: #FFD700;">
+      <h2>Timer</h2><p>Configure contagens regressivas com facilidade.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('mundial.html')" style="background-color: #FF5733;">
+      <h2>Relógio Mundial</h2><p>Veja a hora em qualquer parte do mundo.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('fuso.html')" style="background-color: #8A2BE2;">
+      <h2>Conversor de Fuso</h2><p>Converta horários entre países.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('data.html')" style="background-color: #A0522D;">
+      <h2>Conversor de Data</h2><p>Transforme datas de forma inteligente.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('contador.html')" style="background-color: #FF1493;">
+      <h2>Contador de Dias</h2><p>Conte dias entre datas importantes.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('calendario.html')" style="background-color: #20B2AA;">
+      <h2>Calendário</h2><p>Consulte o calendário atualizado.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('tarefas.html')" style="background-color: #FF8C00;">
+      <h2>Tarefas Diárias</h2><p>Organize suas atividades com facilidade.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('alarme.html')" style="background-color: #DC143C;">
+      <h2>Alarme</h2><p>Configure alarmes direto no navegador.</p>
+    </a>
+    <a href="#" class="card" onclick="abrirComAnuncio('calorias.html')" style="background-color: #6B8E23;">
+      <h2>Calculadora de Calorias</h2><p>Ideal para dietas e treinos.</p>
+    </a>
   </main>
 
   <footer>
@@ -123,6 +125,23 @@
       <a href="https://www.monetag.com/?ref_id=zg2e" target="_blank" rel="noopener noreferrer">Monetag</a>
     </p>
   </footer>
+
+  <!-- ✅ Script para anúncio + redirecionamento interno -->
+  <script>
+    function abrirComAnuncio(destino) {
+      const script = document.createElement('script');
+      script.src = "https://fpyf8.com/88/tag.min.js";
+      script.setAttribute("data-zone", "9239739");
+      script.async = true;
+      script.setAttribute("data-cfasync", "false");
+      document.body.appendChild(script);
+      console.log("✅ Anúncio por clique ativado");
+
+      setTimeout(() => {
+        window.location.href = destino;
+      }, 400); // tempo para o popunder abrir
+    }
+  </script>
 
 </body>
 </html>
