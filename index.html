@@ -1,130 +1,196 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ativador de Crescimento Capilar</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #00ff00;
-            color: black;
-            text-align: center;
-            padding: 50px 0;
-        }
-        .header h1 {
-            font-size: 40px;
-            font-weight: bold;
-        }
-        .header p {
-            font-size: 25px;
-            font-weight: bold;
-        }
-        .hero {
-            text-align: center;
-            padding: 20px;
-        }
-        .hero img {
-            max-width: 300px; /* Ajustei para dar uma melhor exibição */
-            margin-bottom: 20px;
-        }
-        .hero h2 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-        .benefits {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px 0;
-            font-size: 16px;
-        }
-        .benefits div {
-            background-color: #f4f4f4;
-            padding: 15px;
-            border-radius: 8px;
-            width: 200px;
-            text-align: center;
-        }
-        .price-section {
-            text-align: center;
-            font-size: 22px;
-            color: #e91e63;
-            font-weight: bold;
-            margin-top: 30px;
-        }
-        .cta-button {
-            background-color: #e91e63;
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .cta-button:hover {
-            background-color: #c2185b;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #f4f4f4;
-            font-size: 14px;
-        }
-        .footer a {
-            color: #000000; /* Texto do botão para o vídeo em preto */
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            padding: 15px 30px;
-            background-color: #f4f4f4;
-            border-radius: 5px;
-        }
-        .footer p {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .highlight {
-            color: #e91e63;
-            font-weight: bold;
-            font-size: 24px;
-        }
-    </style>
-</head>
-<body>
+import { CTAButton } from "@/components/CTAButton";
+import { FeatureCard } from "@/components/FeatureCard";
+import { HighlightBadge } from "@/components/HighlightBadge";
+import { 
+  Sparkles, 
+  Shield, 
+  Zap, 
+  Heart,
+  Clock,
+  CreditCard,
+  Truck,
+  Gift,
+  CheckCircle2,
+  PlayCircle
+} from "lucide-react";
+import productImage from "@/assets/product-image.png";
 
-<div class="header">
-    <h1>Pague Só na Entrega</h1>
-    <p class="highlight">Receba em 24 Horas</p>
-</div>
+const Index = () => {
+  const handleBuyClick = () => {
+    window.open("https://entrega.logzz.com.br/pay/memglz380/ativ-cresc-2-197", "_blank");
+  };
 
-<div class="hero">
-    <!-- Inserindo a imagem do produto corretamente -->
-    <img src="https://user-images.githubusercontent.com/12345678/ativador-crescimento.png" alt="Ativador de Crescimento Capilar">
-    <h2>Ativador de Crescimento Capilar</h2>
-    <p>✅ Crescimento acelerado desde a raiz</p>
-    <p>✅ Redução imediata da queda capilar</p>
-    <p>✅ Cabelos mais fortes, brilhantes e saudáveis</p>
-    <p>✅ Resultados testados e aprovados por especialistas</p>
-</div>
+  return (
+    <div className="min-h-screen bg-gradient-hero">
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 py-12 md:py-20">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground mb-4 leading-tight">
+            Ativador de Crescimento Capilar
+          </h1>
+          <p className="text-xl md:text-3xl text-muted-foreground font-semibold">
+            Acelere o Crescimento dos Seus Fios!
+          </p>
+        </div>
 
-<div class="price-section">
-    <p>Pague 1, leve 2 por apenas R$197</p>
-    <a href="https://entrega.logzz.com.br/pay/memglz380/ativ-cresc-2-197" class="cta-button">Compre Agora</a>
-</div>
+        {/* Product Image */}
+        <div className="flex justify-center mb-12">
+          <img 
+            src={productImage} 
+            alt="Ativador de Crescimento Capilar PRO+" 
+            className="max-w-md w-full h-auto rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300"
+          />
+        </div>
 
-<div class="footer">
-    <p class="highlight">Diferencial: Pague Somente na Entrega</p>
-    <p>Assista ao vídeo para ver os resultados!</p>
-    <a href="https://youtube.com/shorts/sd6MUcI3FjY?si=pr1WrUMHRdlOXQUP" target="_blank">Clique aqui para assistir!</a>
-</div>
+        {/* Main Offer */}
+        <div className="text-center mb-12 flex flex-col items-center">
+          <div className="inline-block bg-gradient-accent px-12 py-8 rounded-3xl shadow-2xl mb-8 hover:scale-105 transition-transform duration-300">
+            <p className="text-white text-3xl md:text-5xl font-black uppercase mb-2">
+              Pague 1 e Leve 2
+            </p>
+            <p className="text-white text-4xl md:text-6xl font-black">
+              Por Apenas R$ 197
+            </p>
+          </div>
+          
+          <CTAButton onClick={handleBuyClick} size="xl">
+            Compre Agora
+          </CTAButton>
+        </div>
 
-</body>
-</html>
+        {/* Highlight Badges */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <HighlightBadge icon={CreditCard} text="Pague Só na Entrega" variant="success" />
+          <HighlightBadge icon={Clock} text="Receba em 24 Horas" variant="success" />
+          <HighlightBadge icon={Truck} text="Entrega Grátis" variant="highlight" />
+          <HighlightBadge icon={Gift} text="Pague 1 e Leve 2" variant="highlight" />
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="container mx-auto px-4 py-16 bg-white rounded-3xl shadow-xl mb-16">
+        <h2 className="text-3xl md:text-5xl font-black text-center text-foreground mb-4">
+          Transforme Seu Cabelo
+        </h2>
+        <p className="text-xl text-center text-muted-foreground mb-12">
+          Crescimento Acelerado, Redução da Queda e Fios Saudáveis!
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <FeatureCard
+            icon={Zap}
+            title="Crescimento Acelerado"
+            description="Acelera o crescimento desde a raiz com fórmula avançada testada"
+          />
+          <FeatureCard
+            icon={Shield}
+            title="Redução da Queda"
+            description="Redução imediata da queda capilar com resultados visíveis"
+          />
+          <FeatureCard
+            icon={Sparkles}
+            title="Fios Mais Fortes"
+            description="Cabelos mais fortes, brilhantes e extremamente saudáveis"
+          />
+          <FeatureCard
+            icon={Heart}
+            title="Aprovado por Especialistas"
+            description="Resultados testados e aprovados por especialistas capilares"
+          />
+        </div>
+
+        {/* Additional Benefits */}
+        <div className="mt-12 max-w-2xl mx-auto">
+          <div className="bg-success-light p-8 rounded-2xl">
+            <h3 className="text-2xl font-bold text-success mb-6 text-center">
+              O Que Você Vai Receber:
+            </h3>
+            <div className="space-y-4">
+              {[
+                "Crescimento acelerado desde a raiz",
+                "Redução imediata da queda capilar",
+                "Cabelos mais fortes e brilhantes",
+                "Fórmula testada por especialistas",
+                "2 unidades pelo preço de 1",
+                "Entrega em até 24 horas"
+              ].map((benefit, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-success flex-shrink-0" />
+                  <span className="text-foreground font-medium">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-black text-center text-foreground mb-6">
+            Veja os Resultados Reais
+          </h2>
+          <p className="text-xl text-center text-muted-foreground mb-8">
+            Assista ao vídeo e comprove a eficácia do produto!
+          </p>
+          
+          <div className="flex flex-col items-center gap-6">
+            <a
+              href="https://youtube.com/shorts/sd6MUcI3FjY?si=pr1WrUMHRdlOXQUP"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative"
+            >
+              <div className="bg-gradient-primary p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-4 text-white">
+                  <PlayCircle className="w-16 h-16 group-hover:scale-110 transition-transform" />
+                  <div>
+                    <p className="text-2xl font-black uppercase">Clique Aqui</p>
+                    <p className="text-lg">Para Assistir o Vídeo</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <div className="w-full aspect-video bg-muted rounded-2xl overflow-hidden shadow-lg">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/sd6MUcI3FjY"
+                title="Vídeo do Produto"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="bg-gradient-primary p-12 md:p-16 rounded-3xl shadow-2xl text-center">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+            Não Perca Esta Oferta Exclusiva!
+          </h2>
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Pague 1 e leve 2 por apenas R$197. Receba em 24 horas e pague somente na entrega!
+          </p>
+          <CTAButton onClick={handleBuyClick} size="xl">
+            Garantir Minha Oferta Agora
+          </CTAButton>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="container mx-auto px-4 py-12 text-center">
+        <p className="text-lg text-muted-foreground font-medium">
+          Produto testado e aprovado por especialistas. Aproveite a oferta exclusiva!
+        </p>
+      </footer>
+    </div>
+  );
+};
+
+export default Index;
