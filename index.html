@@ -5,16 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ativador de Crescimento Capilar | Oferta Exclusiva</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', Arial, sans-serif;
-      background: linear-gradient(to bottom, #f8fff8, #eaffea);
-      color: #222;
-      overflow-x: hidden;
+    :root {
+      --primary: #00b33c;
+      --accent: #e91e63;
+      --bg: #f8fff8;
+      --text-dark: #111;
+      --text-light: #555;
     }
 
-    h1, h2, h3 {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
     }
 
     .container {
@@ -23,29 +32,31 @@
       margin: auto;
     }
 
+    /* ===== HERO SECTION ===== */
     .hero {
       text-align: center;
       padding: 60px 20px;
     }
 
     .hero h1 {
-      font-size: 2.5em;
+      font-size: 2.6em;
       font-weight: 900;
-      color: #000;
     }
 
     .hero p {
       font-size: 1.3em;
-      color: #444;
+      color: var(--text-light);
       margin-top: 10px;
       font-weight: 600;
     }
 
     .hero img {
-      max-width: 300px;
+      max-width: 350px;
+      width: 90%;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      margin: 40px 0;
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+      margin: 30px auto;
+      display: block;
       transition: transform 0.3s ease;
     }
 
@@ -53,13 +64,14 @@
       transform: scale(1.05);
     }
 
+    /* ===== OFFER SECTION ===== */
     .offer {
       text-align: center;
-      background: linear-gradient(135deg, #00ff66, #009933);
+      background: linear-gradient(135deg, var(--primary), #009933);
       color: #fff;
-      padding: 40px 20px;
+      padding: 50px 20px;
       border-radius: 20px;
-      margin-bottom: 40px;
+      margin: 40px auto;
       box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
 
@@ -67,28 +79,32 @@
       font-size: 2em;
       font-weight: 900;
       text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     .offer p {
-      font-size: 1.5em;
-      margin: 10px 0;
+      font-size: 1.6em;
+      font-weight: 600;
     }
 
     .cta-button {
-      background-color: #e91e63;
+      background-color: var(--accent);
       color: #fff;
       border: none;
       padding: 15px 40px;
       border-radius: 10px;
       font-size: 1.2em;
+      font-weight: bold;
       cursor: pointer;
       transition: background 0.3s ease;
+      margin-top: 20px;
     }
 
     .cta-button:hover {
       background-color: #c2185b;
     }
 
+    /* ===== BADGES ===== */
     .badges {
       display: flex;
       flex-wrap: wrap;
@@ -99,25 +115,27 @@
 
     .badge {
       background: #fff;
-      border: 2px solid #00b33c;
-      color: #00b33c;
+      border: 2px solid var(--primary);
+      color: var(--primary);
       padding: 12px 25px;
       border-radius: 30px;
       font-weight: bold;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      flex: 1 1 200px;
     }
 
+    /* ===== BENEFITS ===== */
     .benefits {
       background: #fff;
       border-radius: 20px;
       padding: 40px 20px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      margin-bottom: 60px;
+      margin: 60px auto;
     }
 
     .benefits h2 {
       text-align: center;
-      color: #111;
       font-size: 2em;
       font-weight: 900;
       margin-bottom: 20px;
@@ -132,23 +150,37 @@
     }
 
     .benefit-list li {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       font-size: 1.1em;
-      padding-left: 30px;
+      padding-left: 35px;
       position: relative;
+      line-height: 1.5;
     }
 
     .benefit-list li::before {
       content: "✔";
       position: absolute;
       left: 0;
-      color: #00b33c;
+      color: var(--primary);
       font-weight: bold;
     }
 
+    /* ===== VIDEO SECTION ===== */
     .video-section {
       text-align: center;
       margin-bottom: 60px;
+    }
+
+    .video-section h2 {
+      font-size: 2em;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .video-section p {
+      color: var(--text-light);
+      font-size: 1.1em;
+      margin-bottom: 20px;
     }
 
     iframe {
@@ -160,6 +192,7 @@
       box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
 
+    /* ===== FOOTER ===== */
     footer {
       background: #f4f4f4;
       text-align: center;
@@ -168,13 +201,23 @@
     }
 
     footer p {
-      color: #555;
+      color: var(--text-light);
     }
 
+    /* ===== RESPONSIVIDADE ===== */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 1.8em; }
-      .offer h2 { font-size: 1.5em; }
+      .hero h1 { font-size: 1.9em; }
+      .offer h2 { font-size: 1.6em; }
+      .offer p { font-size: 1.3em; }
       iframe { height: 250px; }
+      .cta-button { font-size: 1em; padding: 12px 30px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.6em; }
+      .hero img { max-width: 250px; }
+      .offer p { font-size: 1.1em; }
+      iframe { height: 220px; }
     }
   </style>
 </head>
@@ -183,7 +226,7 @@
   <section class="hero container">
     <h1>Ativador de Crescimento Capilar</h1>
     <p>Acelere o Crescimento dos Seus Fios!</p>
-    <img src="https://your-image-link-here.com" alt="Ativador de Crescimento Capilar">
+    <img src="INSIRA_AQUI_O_LINK_DA_IMAGEM_DO_PRODUTO" alt="Ativador de Crescimento Capilar">
   </section>
 
   <section class="offer container">
