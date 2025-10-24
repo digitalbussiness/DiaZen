@@ -22,12 +22,16 @@
             font-size: 40px;
             font-weight: bold;
         }
+        .header p {
+            font-size: 25px;
+            font-weight: bold;
+        }
         .hero {
             text-align: center;
             padding: 20px;
         }
         .hero img {
-            max-width: 250px;
+            max-width: 300px; /* Ajustei para dar uma melhor exibição */
             margin-bottom: 20px;
         }
         .hero h2 {
@@ -63,6 +67,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            text-decoration: none;
         }
         .cta-button:hover {
             background-color: #c2185b;
@@ -76,6 +81,17 @@
         .footer a {
             color: #e91e63;
             text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .footer p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #e91e63;
+            font-weight: bold;
+            font-size: 24px;
         }
     </style>
 </head>
@@ -83,11 +99,11 @@
 
 <div class="header">
     <h1>Pague Só na Entrega</h1>
-    <p>Receba em 24 Horas</p>
+    <p class="highlight">Receba em 24 Horas</p>
 </div>
 
 <div class="hero">
-    <!-- Inserindo a imagem do produto -->
+    <!-- Inserindo a imagem do produto corretamente -->
     <img src="https://user-images.githubusercontent.com/12345678/ativador-crescimento.png" alt="Ativador de Crescimento Capilar">
     <h2>Ativador de Crescimento Capilar</h2>
     <p>✅ Crescimento acelerado desde a raiz</p>
@@ -98,15 +114,13 @@
 
 <div class="price-section">
     <p>Pague 1, leve 2 por apenas R$197</p>
-    <a href="https://entrega.logzz.com.br/pay/memglz380/ativ-cresc-2-197">
-        <button class="cta-button">Compre Agora</button>
-    </a>
+    <a href="https://entrega.logzz.com.br/pay/memglz380/ativ-cresc-2-197" class="cta-button">Compre Agora</a>
 </div>
 
 <div class="footer">
-    <p><strong>Diferencial:</strong> Pague Somente na Entrega</p>
+    <p class="highlight">Diferencial: Pague Somente na Entrega</p>
     <p>Assista ao vídeo para ver os resultados!</p>
-    <p><a href="https://youtube.com/shorts/sd6MUcI3FjY?si=pr1WrUMHRdlOXQUP" target="_blank">Clique aqui para assistir!</a></p>
+    <a href="https://youtube.com/shorts/sd6MUcI3FjY?si=pr1WrUMHRdlOXQUP" target="_blank" class="cta-button">Clique aqui para assistir!</a>
 </div>
 
 </body>
