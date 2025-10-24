@@ -1,181 +1,231 @@
-import { CTAButton } from "@/components/CTAButton";
-import { FeatureCard } from "@/components/FeatureCard";
-import { HighlightBadge } from "@/components/HighlightBadge";
-import { 
-  Sparkles, 
-  Shield, 
-  Zap, 
-  Heart,
-  Clock,
-  CreditCard,
-  Truck,
-  Gift,
-  CheckCircle2,
-  PlayCircle
-} from "lucide-react";
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ativador de Crescimento Capilar | Oferta Exclusiva</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(to bottom, #f8fff8, #eaffea);
+      color: #222;
+      overflow-x: hidden;
+    }
 
+    h1, h2, h3 {
+      margin: 0;
+    }
 
-const Index = () => {
-  const handleBuyClick = () => {
-    window.open("https://entrega.logzz.com.br/pay/memglz380/ativ-cresc-2-197", "_blank");
-  };
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-  return (
-    <div className="min-h-screen bg-gradient-hero">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-8 md:py-12 lg:py-20">
-        <div className="text-center mb-6 md:mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground mb-3 md:mb-4 leading-tight px-2">
-            Ativador de Crescimento Capilar
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground font-semibold px-2">
-            Acelere o Crescimento dos Seus Fios!
-          </p>
-        </div>
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
 
-        {/* Product Image */}
-        <div className="flex justify-center mb-8 md:mb-12 px-4">
-          <img 
-            src="/product-image.png" 
-            alt="Ativador de Crescimento Capilar PRO+" 
-            width="448"
-            height="672"
-            fetchPriority="high"
-            className="max-w-[280px] sm:max-w-sm md:max-w-md w-full h-auto rounded-2xl md:rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+    .hero h1 {
+      font-size: 2.5em;
+      font-weight: 900;
+      color: #000;
+    }
 
-        {/* Main Offer */}
-        <div className="text-center mb-8 md:mb-12 flex flex-col items-center">
-          <div className="inline-block bg-gradient-accent px-6 py-6 md:px-12 md:py-8 rounded-2xl md:rounded-3xl shadow-2xl mb-6 md:mb-8 hover:scale-105 transition-transform duration-300 max-w-full">
-            <p className="text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl font-black uppercase mb-2">
-              Pague 1 e Leve 2
-            </p>
-            <p className="text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black">
-              Por Apenas R$ 197
-            </p>
-          </div>
-          
-          <CTAButton onClick={handleBuyClick} size="xl">
-            Compre Agora
-          </CTAButton>
-        </div>
+    .hero p {
+      font-size: 1.3em;
+      color: #444;
+      margin-top: 10px;
+      font-weight: 600;
+    }
 
-        {/* Highlight Badges */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
-          <HighlightBadge icon={CreditCard} text="Pague Só na Entrega" variant="success" />
-          <HighlightBadge icon={Clock} text="Receba em 24 Horas" variant="success" />
-          <HighlightBadge icon={Truck} text="Entrega Grátis" variant="highlight" />
-          <HighlightBadge icon={Gift} text="Pague 1 e Leve 2" variant="highlight" />
-        </div>
-      </section>
+    .hero img {
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      margin: 40px 0;
+      transition: transform 0.3s ease;
+    }
 
-      {/* Benefits Section */}
-      <section className="container mx-auto px-4 py-12 md:py-16 bg-white rounded-2xl md:rounded-3xl shadow-xl mb-12 md:mb-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-center text-foreground mb-3 md:mb-4 px-2">
-          Transforme Seu Cabelo
-        </h2>
-        <p className="text-base sm:text-lg md:text-xl text-center text-muted-foreground mb-8 md:mb-12 px-2">
-          Crescimento Acelerado, Redução da Queda e Fios Saudáveis!
-        </p>
+    .hero img:hover {
+      transform: scale(1.05);
+    }
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <FeatureCard
-            icon={Zap}
-            title="Crescimento Acelerado"
-            description="Acelera o crescimento desde a raiz com fórmula avançada testada"
-          />
-          <FeatureCard
-            icon={Shield}
-            title="Redução da Queda"
-            description="Redução imediata da queda capilar com resultados visíveis"
-          />
-          <FeatureCard
-            icon={Sparkles}
-            title="Fios Mais Fortes"
-            description="Cabelos mais fortes, brilhantes e extremamente saudáveis"
-          />
-          <FeatureCard
-            icon={Heart}
-            title="Aprovado por Especialistas"
-            description="Resultados testados e aprovados por especialistas capilares"
-          />
-        </div>
+    .offer {
+      text-align: center;
+      background: linear-gradient(135deg, #00ff66, #009933);
+      color: #fff;
+      padding: 40px 20px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
 
-        {/* Additional Benefits */}
-        <div className="mt-12 max-w-2xl mx-auto">
-          <div className="bg-success-light p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold text-success mb-6 text-center">
-              O Que Você Vai Receber:
-            </h3>
-            <div className="space-y-4">
-              {[
-                "Crescimento acelerado desde a raiz",
-                "Redução imediata da queda capilar",
-                "Cabelos mais fortes e brilhantes",
-                "Fórmula testada por especialistas",
-                "2 unidades pelo preço de 1",
-                "Entrega em até 24 horas"
-              ].map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-success flex-shrink-0" />
-                  <span className="text-foreground font-medium">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+    .offer h2 {
+      font-size: 2em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
 
-      {/* Video Section */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
-        <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-8 lg:p-12 max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-center text-foreground mb-4 md:mb-6 px-2">
-            Veja os Resultados Reais
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-center text-muted-foreground mb-6 md:mb-8 px-2">
-            Assista ao vídeo e comprove a eficácia do produto!
-          </p>
-          
-          <div className="w-full aspect-video bg-muted rounded-2xl overflow-hidden shadow-lg">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/sd6MUcI3FjY"
-              title="Vídeo do Produto"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-              className="w-full h-full"
-            ></iframe>
-          </div>
-        </div>
-      </section>
+    .offer p {
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
 
-      {/* Final CTA Section */}
-      <section className="container mx-auto px-4 py-12 md:py-16">
-        <div className="bg-gradient-primary p-8 md:p-12 lg:p-16 rounded-2xl md:rounded-3xl shadow-2xl text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 md:mb-6 px-2">
-            Não Perca Esta Oferta Exclusiva!
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
-            Pague 1 e leve 2 por apenas R$197. Receba em 24 horas e pague somente na entrega!
-          </p>
-          <CTAButton onClick={handleBuyClick} size="xl">
-            Garantir Minha Oferta Agora
-          </CTAButton>
-        </div>
-      </section>
+    .cta-button {
+      background-color: #e91e63;
+      color: #fff;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-      {/* Footer */}
-      <footer className="container mx-auto px-4 py-12 text-center">
-        <p className="text-lg text-muted-foreground font-medium">
-          Produto testado e aprovado por especialistas. Aproveite a oferta exclusiva!
-        </p>
-      </footer>
-    </div>
-  );
-};
+    .cta-button:hover {
+      background-color: #c2185b;
+    }
 
-export default Index;
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 40px 0;
+    }
+
+    .badge {
+      background: #fff;
+      border: 2px solid #00b33c;
+      color: #00b33c;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .benefits {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin-bottom: 60px;
+    }
+
+    .benefits h2 {
+      text-align: center;
+      color: #111;
+      font-size: 2em;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .benefit-list {
+      max-width: 700px;
+      margin: auto;
+      text-align: left;
+      list-style: none;
+      padding: 0;
+    }
+
+    .benefit-list li {
+      margin-bottom: 12px;
+      font-size: 1.1em;
+      padding-left: 30px;
+      position: relative;
+    }
+
+    .benefit-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #00b33c;
+      font-weight: bold;
+    }
+
+    .video-section {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    iframe {
+      width: 90%;
+      max-width: 700px;
+      height: 400px;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: #f4f4f4;
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 0.9em;
+    }
+
+    footer p {
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8em; }
+      .offer h2 { font-size: 1.5em; }
+      iframe { height: 250px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero container">
+    <h1>Ativador de Crescimento Capilar</h1>
+    <p>Acelere o Crescimento dos Seus Fios!</p>
+    <img src="https://your-image-link-here.com" alt="Ativador de Crescimento Capilar">
+  </section>
+
+  <section class="offer container">
+    <h2>Pague 1 e Leve 2</h2>
+    <p>Por apenas R$197</p>
+    <button class="cta-button" onclick="window.open('https://entrega.logzz.com.br/pay/memglz380/ativ-cresc-2-197','_blank')">Compre Agora</button>
+  </section>
+
+  <div class="badges container">
+    <div class="badge">💳 Pague Só na Entrega</div>
+    <div class="badge">⏱️ Receba em 24 Horas</div>
+    <div class="badge">🚚 Entrega Grátis</div>
+    <div class="badge">🎁 Pague 1 e Leve 2</div>
+  </div>
+
+  <section class="benefits container">
+    <h2>Transforme Seu Cabelo</h2>
+    <ul class="benefit-list">
+      <li>Crescimento acelerado desde a raiz</li>
+      <li>Redução imediata da queda capilar</li>
+      <li>Cabelos mais fortes e brilhantes</li>
+      <li>Fórmula testada e aprovada por especialistas</li>
+      <li>2 unidades pelo preço de 1</li>
+      <li>Entrega em até 24 horas</li>
+    </ul>
+  </section>
+
+  <section class="video-section container">
+    <h2>Veja os Resultados Reais</h2>
+    <p>Assista e comprove a eficácia do produto!</p>
+    <iframe src="https://www.youtube.com/embed/sd6MUcI3FjY" title="Vídeo do Produto" allowfullscreen></iframe>
+  </section>
+
+  <section class="offer container">
+    <h2>Não Perca Esta Oferta Exclusiva!</h2>
+    <p>Pague 1 e leve 2 por apenas R$197. Receba em 24 horas e pague somente na entrega!</p>
+    <button class="cta-button" onclick="window.open('https://entrega.logzz.com.br/pay/memglz380/ativ-cresc-2-197','_blank')">Garantir Minha Oferta Agora</button>
+  </section>
+
+  <footer>
+    <p>Produto testado e aprovado por especialistas. Aproveite a oferta exclusiva!</p>
+  </footer>
+
+</body>
+</html>
